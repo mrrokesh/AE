@@ -61,6 +61,90 @@
       "Serial": "Serial",
       "AUX": "AUX",
       "HDMI": "HDMI"
-    }
+    },
+    "sim": {
+      "sameWidth": "same {{v}} print width",
+      "diffWidth": "{{alt}} print width instead of {{orig}}",
+      "alsoConn": "also {{v}}",
+      "extraConn": "+ {{v}} port",
+      "lacksConn": "no {{v}}",
+      "sameSpeed": "same speed ({{alt}} {{unit}})",
+      "slower": "slower: {{alt}} vs {{orig}} {{unit}}",
+      "faster": "faster: {{alt}} vs {{orig}} {{unit}}",
+      "resolutionOk": "same or better print quality ({{v}})",
+      "lowerRes": "lower print quality: {{alt}} vs {{orig}} dpi",
+      "autoCutter": "auto cutter",
+      "noCutter": "no auto cutter",
+      "sameColor": "colour printing",
+      "sameMono": "black and white printing",
+      "colorInstead": "prints in colour",
+      "monoInstead": "black and white only",
+      "similarPower": "similar power ({{alt}} W)",
+      "lessPower": "less powerful: {{alt}} vs {{orig}} W",
+      "morePower": "more powerful: {{alt}} vs {{orig}} W",
+      "similarBattery": "similar battery ({{alt}} h)",
+      "lessBattery": "shorter battery: {{alt}} vs {{orig}} h",
+      "moreBattery": "longer battery: {{alt}} vs {{orig}} h",
+      "alsoWaterproof": "also waterproof",
+      "sameBrand": "same brand ({{v}})",
+      "similarPrice": "about the same price",
+      "priceMore": "{{v}} more",
+      "priceLess": "{{v}} less",
+      "otherType": "different type of printer",
+      "confidence": {
+        "high": "High confidence",
+        "medium": "Medium confidence",
+        "low": "Low confidence: few specs known"
+      },
+      "matchPct": "{{pct}}% match"
+    },
+    "alt": {
+      "bannerTitle": "Out of stock: {{name}}",
+      "bannerText": "Offer one of these in-stock alternatives so the sale is not lost.",
+      "none": "No close in-stock alternative found.",
+      "add": "Add to lead",
+      "added": "Added to lead",
+      "whatsapp": "Send on WhatsApp",
+      "draftTitle": "WhatsApp message",
+      "draftHint": "Edit the message if you like, then open WhatsApp.",
+      "openWa": "Open WhatsApp",
+      "similar": "Similar in stock",
+      "similarPick": "Similar in stock…",
+      "outOfStock": "Out of stock",
+      "waiting_one": "{{count}} lead waiting",
+      "waiting_other": "{{count}} leads waiting",
+      "viewLeads": "View leads",
+      "noSimilar": "No similar product in stock"
+    },
+    "waitlist": {
+      "notify": "Notify when back in stock",
+      "on": "On waitlist",
+      "joined": "We will remind you when {{name}} is back",
+      "expected": "Expected {{date}}",
+      "unknown": "No date yet, check in 7 days",
+      "restockToast_one": "{{count}} customer was waiting for this. Follow-up created.",
+      "restockToast_other": "{{count}} customers were waiting for this. Follow-ups created.",
+      "restockNone": "Back in stock. No one was on the waitlist.",
+      "notification": "{{product}} is back in stock. Call {{name}} now"
+    },
+    "lostPrompt": {
+      "title": "Offer an alternative or add to waitlist?",
+      "text": "{{name}} wanted a product that is out of stock. You can still save this sale.",
+      "alternatives": "Show alternatives",
+      "waitlist": "Add to waitlist",
+      "lostAnyway": "Mark as lost anyway",
+      "waitlisted": "Added to waitlist. Lead stays open."
+    },
+    "demand": {
+      "title": "Lost demand from stock-outs",
+      "subtitle": "Leads asking for out-of-stock products",
+      "leads_one": "{{count}} lead",
+      "leads_other": "{{count}} leads",
+      "value": "worth {{value}}",
+      "saved": "{{count}} saved with an alternative",
+      "none": "No stock-out demand right now.",
+      "total": "{{leads}} leads, about {{value}} at risk"
+    },
+    "restockUnknownShort": "date not known"
   }
 }

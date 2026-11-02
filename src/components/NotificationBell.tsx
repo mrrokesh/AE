@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Bell, BellRing, CalendarClock, Inbox, Siren } from 'lucide-react'
+import { Bell, BellRing, CalendarClock, Inbox, PackageCheck, Siren } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button, Popover } from '@/components/ui'
 import { leadName } from '@/features/leads/format'
@@ -13,8 +13,9 @@ import {
 import { useCrmStore } from '@/store/crmStore'
 import { useState } from 'react'
 
-const ICON = { escalation: Siren, enquiry: Inbox, overdue: CalendarClock }
+const ICON = { restock: PackageCheck, escalation: Siren, enquiry: Inbox, overdue: CalendarClock }
 const COLOR: Record<NotificationKind, string> = {
+  restock: 'text-success',
   escalation: 'text-danger',
   enquiry: 'text-info',
   overdue: 'text-warning',

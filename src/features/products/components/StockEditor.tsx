@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useCurrentUser } from '@/features/auth/useCurrentUser'
 import { toast } from '@/store/toastStore'
 import type { Product, StockStatus } from '@/types'
 import { STOCK_STATUSES, updateStock, type StockPatch } from '../stock'
@@ -10,11 +11,15 @@ const field =
 /** Owner-only live stock controls. Saves on change/blur. */
 export function StockEditor({ product }: { product: Product }) {
   const { t } = useTranslation()
+  const user = useCurrentUser()
   const [draft, setDraft] = useState<string | null>(null)
   const save = async (patch: StockPatch) => {
+    if (!user) return
     try {
-      await updateStock(product, patch)
-      toast.success(t('catalog.stockUpdated', { name: product.name }))
+      const { waiting } = await updateStock(product, patch, user)
+      if (waiting === null) toast.success(t('catalog.stockUpdated', { name: product.name }))
+      else if (waiting === 0) toast.success(t('catalog.waitlist.restockNone'))
+      else toast.success(t('catalog.waitlist.restockToast', { count: waiting }))
     } catch {
       toast.error(t('errors.generic'))
     }

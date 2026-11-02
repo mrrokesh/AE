@@ -12,3 +12,9 @@ export const firstProduct = (l: Lead, products: Product[]) =>
   products.find((p) => p.id === l.productInterest[0])
 export const istHour = (t: number) => new Date(t + 5.5 * 3_600_000).getUTCHours()
 export const DAY = 86_400_000
+
+/** Translate a similarity reason (see features/products/similarity.ts) into the given language. */
+export const reasonText = (
+  lng: Lang,
+  r: { key: string; params?: Record<string, string | number> },
+) => tr(lng, `catalog.sim.${r.key}`, r.params)

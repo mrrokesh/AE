@@ -45,6 +45,7 @@ export async function receiveWebsiteEnquiry(): Promise<Lead> {
       },
     ],
     tags: [],
+    waitlist: [],
   })
   crm.applyLead(lead)
   const title = i18n.t('inbox.newEnquiry')

@@ -11,7 +11,7 @@ import type {
   ScoreOutput,
 } from '../types'
 import { scoreLeadRaw } from './scoring'
-import { DAY, firstProduct, istHour, nm, tr } from './shared'
+import { DAY, firstProduct, istHour, nm, reasonText, tr } from './shared'
 
 export function scoreLead({ lead, now, lang }: LeadCtx): ScoreOutput {
   const raw = scoreLeadRaw(lead, now)
@@ -105,7 +105,26 @@ export function draftWhatsAppMessage({
   staffName,
   lang,
   kind,
+  stock,
 }: DraftInput): DraftOutput {
+  if (kind === 'out_of_stock_alternative' && stock) {
+    const { original, alternative: alt } = stock
+    const price = alt.differences.find((d) => d.key === 'priceMore' || d.key === 'priceLess')
+    const points = alt.matches
+      .filter((m) => m.key !== 'similarPrice')
+      .slice(0, 2)
+      .map((m) => reasonText(lang, m))
+    return {
+      message: tr(lang, 'wa.out_of_stock_alternative', {
+        name: nm(lead).split(' ')[0],
+        staff: staffName.split(' ')[0],
+        original: original.name,
+        alt: alt.product.name,
+        points: points.length ? points.join(', ') : tr(lang, 'wa.similarUse'),
+        price: price ? `, ${reasonText(lang, price)}` : '',
+      }),
+    }
+  }
   const p = firstProduct(lead, products)
   return {
     message: tr(lang, `wa.${kind}`, {

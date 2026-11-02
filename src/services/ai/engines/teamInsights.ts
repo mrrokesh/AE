@@ -1,6 +1,7 @@
 import { isOpenStage } from '@/constants'
 import { bucketOf } from '@/features/leads/followUps'
 import { isUntouched } from '@/features/leads/sla'
+import { stockDemand } from '@/features/products/demand'
 import { endOfDayIST } from '@/lib/dates'
 import type {
   AtRiskInput,
@@ -13,7 +14,14 @@ import type {
 import { scoreLeadRaw } from './scoring'
 import { DAY, firstProduct, istHour, nm, tr } from './shared'
 
-export function dailyBriefing({ leads, users, now, lang, slaMinutes }: TeamCtx): BriefingOutput {
+export function dailyBriefing({
+  leads,
+  users,
+  products,
+  now,
+  lang,
+  slaMinutes,
+}: TeamCtx): BriefingOutput {
   const open = leads.filter((l) => isOpenStage(l.stage))
   const overdue = open.filter((l) => bucketOf(l, now) === 'overdue').length
   const hotToday = open.filter(
@@ -38,6 +46,9 @@ export function dailyBriefing({ leads, users, now, lang, slaMinutes }: TeamCtx):
   if (overdue) parts.push(tr(lang, 'ai.briefing.overdue', { count: overdue }))
   if (hotToday) parts.push(tr(lang, 'ai.briefing.hot', { count: hotToday }))
   if (late.length) parts.push(tr(lang, 'ai.briefing.untouched', { count: late.length }))
+  const top = stockDemand(leads, products, now).sort((a, b) => b.weekCount - a.weekCount)[0]
+  if (top && top.weekCount > 0)
+    parts.push(tr(lang, 'ai.briefing.restock', { product: top.product.name, count: top.weekCount }))
   if (worst)
     parts.push(
       tr(lang, 'ai.briefing.staff', {

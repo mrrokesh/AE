@@ -6,6 +6,7 @@ import { useNow } from '@/store/clockStore'
 import { useCrmStore } from '@/store/crmStore'
 import { buildOwnerStats } from '../stats'
 import { AtRiskCard } from './AtRiskCard'
+import { StockDemandCard } from './StockDemandCard'
 import { BarChartCard } from './BarChartCard'
 import { BriefingCard } from './BriefingCard'
 import { Kpi } from './Kpi'
@@ -65,6 +66,7 @@ export function OwnerDashboard() {
         />
         <Leaderboard rows={s.leaderboard} />
         <AtRiskCard />
+        <StockDemandCard />
       </div>
     </div>
   )

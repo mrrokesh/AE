@@ -78,7 +78,7 @@ export function LeadHeader({ lead }: { lead: Lead }) {
           value={lead.stage}
           onChange={(e) => {
             const s = e.target.value as StageId
-            if (s === 'lost') openLostReason((r) => void setStage(s, r))
+            if (s === 'lost') openLostReason((r) => void setStage(s, r), lead.id)
             else void setStage(s)
           }}
           options={LEAD_STAGES.map((s) => ({ value: s.id, label: t(`stages.${s.id}`) }))}

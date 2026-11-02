@@ -8,6 +8,8 @@ import { cn } from '@/lib/cn'
 import { useCrmStore } from '@/store/crmStore'
 import { useNow } from '@/store/clockStore'
 import { toast } from '@/store/toastStore'
+import { oosInterest } from '@/features/products/alternatives'
+import { OutOfStockLostPrompt } from '@/features/products/components/OutOfStockLostPrompt'
 import { logActivity, type LogActivityInput } from '../actions'
 import { leadName } from '../format'
 import { FollowUpPicker } from './FollowUpPicker'
@@ -46,16 +48,52 @@ export function LogActivityForm({
   const now = useNow()
   const [saving, setSaving] = useState(false)
   const [touched, setTouched] = useState(false)
+  const [stockPrompt, setStockPrompt] = useState(false)
+  const products = useCrmStore((st) => st.products)
   if (!lead || !user) return null
+  if (stockPrompt)
+    return (
+      <OutOfStockLostPrompt
+        lead={lead}
+        onClose={onDone}
+        onLostAnyway={() => {
+          setStockPrompt(false)
+          void save(true)
+        }}
+        onWaitlisted={async (updated) => {
+          // Keep the lead open: log the touch with the restock follow-up as the next action.
+          await logActivity(
+            {
+              leadId,
+              type,
+              outcomeKey: outcome || undefined,
+              text,
+              stage: stage || undefined,
+              next: { kind: 'followUp', at: updated.nextFollowUpAt! },
+            },
+            user,
+          )
+          onDone()
+        }}
+      />
+    )
 
   const nextOk =
     nextKind === 'won' ||
     (nextKind === 'lost' && !!reason) ||
     (nextKind === 'followUp' && !!at && Date.parse(at) > now - 60_000)
 
-  const save = async () => {
+  const save = async (skipStockCheck = false) => {
     setTouched(true)
     if (!nextOk || !nextKind) return
+    if (
+      !skipStockCheck &&
+      nextKind === 'lost' &&
+      reason === 'out_of_stock' &&
+      lead &&
+      oosInterest(lead, products).length > 0
+    )
+      return setStockPrompt(true)
     setSaving(true)
     try {
       await logActivity(

@@ -1,6 +1,7 @@
 import { productsApi } from '@/services/api'
 import { useCrmStore } from '@/store/crmStore'
-import type { Product, StockStatus } from '@/types'
+import type { Product, StockStatus, User } from '@/types'
+import { notifyRestock } from './waitlist'
 
 export const LOW_STOCK_MAX = 3
 export const STOCK_STATUSES: StockStatus[] = ['in_stock', 'low', 'out_of_stock']
@@ -31,8 +32,14 @@ export function normalizeStock(current: Product, patch: StockPatch) {
   return { stockQty: qty, stockStatus: status, restockEta: eta }
 }
 
-export async function updateStock(product: Product, patch: StockPatch): Promise<Product> {
+/** Saves the stock change. On out_of_stock -> available, waiting customers get a call-now follow-up. */
+export async function updateStock(
+  product: Product,
+  patch: StockPatch,
+  by: User,
+): Promise<{ product: Product; waiting: number | null }> {
   const next = await productsApi.update(product.id, normalizeStock(product, patch))
   useCrmStore.getState().applyProduct(next)
-  return next
+  const restocked = product.stockStatus === 'out_of_stock' && next.stockStatus !== 'out_of_stock'
+  return { product: next, waiting: restocked ? await notifyRestock(next, by) : null }
 }

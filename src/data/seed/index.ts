@@ -166,6 +166,7 @@ export function buildSeed(now = Date.now()): SeedData {
       lastContactedAt: touches.length ? touches[touches.length - 1].at : null,
       lostReason,
       activities: sorted,
+      waitlist: [],
       tags: [
         ...(flags.includes('urgent') ? ['urgent'] : []),
         ...(flags.includes('bulk') || quantity >= 3 ? ['bulk'] : []),
@@ -174,6 +175,27 @@ export function buildSeed(now = Date.now()): SeedData {
       updatedAt: sorted[sorted.length - 1].at,
     }
   })
+
+  // Demo story: some customers already asked to be told when their out-of-stock product returns.
+  const WAITING: Record<string, string> = {
+    'Ramesh Babu': 'p5634',
+    'Roja Devi': 'p5634',
+    'Nandhini M': 'p5437',
+  }
+  for (const l of leads) {
+    const pid = WAITING[l.name]
+    if (!pid || !prod[pid]) continue
+    l.waitlist = [pid]
+    l.activities.push({
+      id: `a_wl_${l.id}`,
+      type: 'system',
+      at: iso(now - 3 * 3_600_000),
+      by: l.assignedTo ?? STAFF[0],
+      key: 'act.waitlistJoined',
+      params: { product: prod[pid].name, date: prod[pid].restockEta ?? '' },
+    })
+    l.activities.sort((a, b) => Date.parse(a.at) - Date.parse(b.at))
+  }
 
   const customers: Customer[] = leads
     .filter((l) => l.stage === 'won')

@@ -1,4 +1,5 @@
 import type { SourceId, Temperature } from '@/constants'
+import type { Alternative } from '@/features/products/similarity'
 import type { Lead, Product, User } from '@/types'
 
 export type Lang = 'en' | 'ta'
@@ -46,9 +47,21 @@ export interface NextActionOutput {
   bestTime: string
 }
 
-export type WaKindId = 'followUp' | 'offer' | 'visit' | 'thanks'
+export type WaKindId = 'followUp' | 'offer' | 'visit' | 'thanks' | 'out_of_stock_alternative'
 export interface DraftInput extends LeadCtx {
   kind: WaKindId
+  /** Required for 'out_of_stock_alternative'. */
+  stock?: { original: Product; alternative: Alternative }
+}
+
+export interface ExplainInput {
+  original: Product
+  alternative: Alternative
+  budget: number | null
+  lang: Lang
+}
+export interface ExplainOutput {
+  text: string
 }
 export interface DraftOutput {
   message: string

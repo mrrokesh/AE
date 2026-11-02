@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Plus, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Badge } from '@/components/ui'
+import { findAlternatives } from '@/features/products/similarity'
 import { formatINR } from '@/lib/format'
 import type { Product } from '@/types'
 
@@ -69,22 +71,52 @@ export function ProductPicker({
           {results.length === 0 && (
             <li className="px-3 py-2 text-xs text-fg-muted">{t('products.noMatch')}</li>
           )}
-          {results.map((p) => (
-            <li key={p.id}>
-              <button
-                type="button"
-                onClick={() => {
-                  onChange([...value, p.id])
-                  setQ('')
-                }}
-                className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-surface-2"
-              >
-                <Plus className="size-3.5 shrink-0 text-fg-subtle" />
-                <span className="min-w-0 flex-1 truncate">{p.name}</span>
-                <span className="text-xs text-fg-muted">{formatINR(p.sellingPrice)}</span>
-              </button>
-            </li>
-          ))}
+          {results.map((p) => {
+            const out = p.stockStatus === 'out_of_stock'
+            const alts = out ? findAlternatives(p, products, 3) : []
+            return (
+              <li key={p.id}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange([...value, p.id])
+                    setQ('')
+                  }}
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-surface-2"
+                >
+                  <Plus className="size-3.5 shrink-0 text-fg-subtle" />
+                  <span className="min-w-0 flex-1 truncate">{p.name}</span>
+                  {out && <Badge tone="danger">{t('catalog.alt.outOfStock')}</Badge>}
+                  <span className="text-xs text-fg-muted">{formatINR(p.sellingPrice)}</span>
+                </button>
+                {out && (
+                  <div className="px-3 pb-2">
+                    {alts.length === 0 ? (
+                      <p className="text-xs text-fg-muted">{t('catalog.alt.noSimilar')}</p>
+                    ) : (
+                      <select
+                        aria-label={t('catalog.alt.similar')}
+                        value=""
+                        onChange={(e) => {
+                          if (!e.target.value) return
+                          onChange([...value, e.target.value])
+                          setQ('')
+                        }}
+                        className="h-8 w-full rounded-md border border-border bg-surface px-2 text-xs"
+                      >
+                        <option value="">{t('catalog.alt.similarPick')}</option>
+                        {alts.map((a) => (
+                          <option key={a.product.id} value={a.product.id}>
+                            {a.product.name} · {formatINR(a.product.sellingPrice)} · {a.score}%
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+                )}
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>

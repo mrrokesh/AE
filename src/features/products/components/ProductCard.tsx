@@ -4,12 +4,13 @@ import { isOwner } from '@/features/auth/permissions'
 import { useCurrentUser } from '@/features/auth/useCurrentUser'
 import type { Product } from '@/types'
 import { ProductImage } from './ProductImage'
+import { OutOfStockExtras } from './OutOfStockExtras'
 import { SpecChips } from './SpecChips'
 import { StockBadge } from './StockBadge'
 import { StockEditor } from './StockEditor'
 import { useTranslation } from 'react-i18next'
 
-export function ProductCard({ product: p }: { product: Product }) {
+export function ProductCard({ product: p, waiting = 0 }: { product: Product; waiting?: number }) {
   const { t } = useTranslation()
   const owner = isOwner(useCurrentUser())
   const off = p.mrp > p.sellingPrice ? Math.round((1 - p.sellingPrice / p.mrp) * 100) : 0
@@ -46,6 +47,7 @@ export function ProductCard({ product: p }: { product: Product }) {
         </div>
         <StockBadge product={p} />
         <SpecChips product={p} />
+        {p.stockStatus === 'out_of_stock' && <OutOfStockExtras product={p} waiting={waiting} />}
         {owner && (
           <div className="mt-auto border-t border-border pt-2">
             <StockEditor product={p} />

@@ -70,6 +70,9 @@
     "rescheduled": "Follow-up rescheduled",
     "assigned": "Assigned to {{name}}",
     "claimed": "{{name}} claimed this lead",
-    "created": "Lead added"
+    "created": "Lead added",
+    "waitlistJoined": "Added to the waitlist for {{product}} (expected {{date}})",
+    "backInStock": "{{product}} is back in stock. Call the customer now",
+    "alternativeAdded": "Added {{to}} as an alternative to {{from}}"
   }
 }

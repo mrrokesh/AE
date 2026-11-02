@@ -39,7 +39,7 @@ export function PipelineBoard({ rows }: { rows: ScoredLead[] }) {
   const requestMove = (leadId: string, stage: StageId) => {
     const lead = rows.find((r) => r.lead.id === leadId)?.lead
     if (!lead || lead.stage === stage) return
-    if (stage === 'lost') openLostReason((reason) => void move(leadId, stage, reason))
+    if (stage === 'lost') openLostReason((reason) => void move(leadId, stage, reason), leadId)
     else void move(leadId, stage)
   }
 

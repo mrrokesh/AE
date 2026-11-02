@@ -1,5 +1,5 @@
 /** Compact lead table: name|locality|source|productIds|qty|stage|scenario|flags */
-export const LEAD_ROWS = `Vignesh K|Fairlands|website|p5612|1|new|fresh|
+export const LEAD_ROWS = `Vignesh K|Fairlands|website|p5634|1|new|fresh|
 Priyadharshini S|Hasthampatti|walk_in|p4717|1|new|fresh|
 Saravanan M|Ammapet|whatsapp|p5647|1|new|red|tanglish
 Kavitha R|Shevapet|phone|p5619|1|new|red|
@@ -7,7 +7,7 @@ Mohamed Ismail|Five Roads|website|p4668|1|new|esc|
 Lakshmi Narayanan|Suramangalam|phone|p5656|2|new|esc|
 Dinesh Kumar|Junction|walk_in|p4603|2|new|red|
 Thenmozhi A|Kondalampatti|whatsapp|p5625|1|contacted|overdue|ta,noans
-Ramesh Babu|Alagapuram|phone|p5612|1|contacted|overdue|noans
+Ramesh Babu|Alagapuram|phone|p5634|1|contacted|overdue|noans
 Sathish Kumar|Gugai|walk_in|p4701|1|interested|overdue|price2
 Revathi P|Kitchipalayam|website|p5233|1|contacted|overdue|
 Annamalai C|Meyyanur|phone|p5625|2|interested|overdue|price2,urgent
@@ -23,12 +23,12 @@ Gopinath R|Five Roads|phone|p5659|1|contacted|soon|
 Aishwarya D|Junction|website|p5227|1|interested|upcoming|
 Manikandan T|Mettur|phone|p5245|1|contacted|upcoming|touched
 Yuvaraj S|Kondalampatti|walk_in|p4471|2|contacted|upcoming|
-Sangeetha K|Alagapuram|whatsapp|p5495|1|interested|upcoming|tanglish
+Sangeetha K|Alagapuram|whatsapp|p5437|1|interested|upcoming|tanglish
 Prakash N|Gugai|phone|p5634|1|store_visit|upcoming|visit
 Hari Haran|Fairlands|website|p4701|1|negotiation|upcoming|price2,touched
 Jayanthi M|Kitchipalayam|walk_in|p5625|1|interested|upcoming|
 Vijay Anand|Meyyanur|phone|p5629|2|contacted|upcoming|
-Roja Devi|Neimandi|whatsapp|p5612|1|interested|upcoming|ta
+Roja Devi|Neimandi|whatsapp|p5634|1|interested|upcoming|ta
 Senthil Kumar|Hasthampatti|phone|p5656|2|negotiation|atrisk|price2
 Abdul Rahman|Shevapet|walk_in|p4668|1|store_visit|atrisk|visit,price2
 Kalaiselvi R|Suramangalam|website|p5233|1|negotiation|atrisk|price2

@@ -7,6 +7,7 @@ import { ActivityTimeline } from '@/features/leads/components/ActivityTimeline'
 import { LeadFollowUpPanel } from '@/features/leads/components/LeadFollowUpPanel'
 import { LeadHeader } from '@/features/leads/components/LeadHeader'
 import { LeadAiPanel } from '@/features/ai/components/LeadAiPanel'
+import { OutOfStockBanner } from '@/features/products/components/OutOfStockBanner'
 import { LeadProducts } from '@/features/leads/components/LeadProducts'
 
 export default function LeadDetail() {
@@ -42,6 +43,7 @@ export default function LeadDetail() {
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="space-y-4 lg:col-span-2">
           <LeadHeader lead={lead} />
+          <OutOfStockBanner lead={lead} />
           <LeadFollowUpPanel lead={lead} />
           <LeadProducts lead={lead} />
           <ActivityTimeline lead={lead} />

@@ -46,6 +46,8 @@ export interface Lead extends Entity {
   lostReason: LostReasonId | null
   activities: Activity[]
   tags: string[]
+  /** Out-of-stock product ids this lead wants to be told about when they are back. */
+  waitlist: string[]
 }
 
 export type StockStatus = 'in_stock' | 'low' | 'out_of_stock'

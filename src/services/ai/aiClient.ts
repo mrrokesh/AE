@@ -15,6 +15,7 @@ import {
   suggestNextAction,
 } from './engines/leadInsights'
 import { parseLeadFromText } from './engines/parseLead'
+import { explainAlternative } from './engines/stockInsights'
 import { atRiskLeads, chatWithCRM, dailyBriefing } from './engines/teamInsights'
 import type { AiTask } from './tasks'
 import type {
@@ -25,6 +26,8 @@ import type {
   ChatOutput,
   DraftInput,
   DraftOutput,
+  ExplainInput,
+  ExplainOutput,
   LeadCtx,
   NextActionOutput,
   ParsedLead,
@@ -45,6 +48,7 @@ export interface AiInputs {
   chatWithCRM: ChatInput
   dailyBriefing: TeamCtx
   atRiskLeads: AtRiskInput
+  explainAlternative: ExplainInput
 }
 export interface AiOutputs {
   scoreLead: ScoreOutput
@@ -57,6 +61,7 @@ export interface AiOutputs {
   chatWithCRM: ChatOutput
   dailyBriefing: BriefingOutput
   atRiskLeads: AtRiskOutput
+  explainAlternative: ExplainOutput
 }
 
 export interface AskResult<T = unknown> {
@@ -75,6 +80,7 @@ const RUNNERS: Runner = {
   chatWithCRM,
   dailyBriefing,
   atRiskLeads,
+  explainAlternative,
   // Planned, not implemented yet:
   summarizeLead: () => ({ summary: '' }),
   draftQuotation: () => ({ notes: '' }),

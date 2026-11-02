@@ -383,6 +383,16 @@ function assignStock(items: Product[]) {
   }
 }
 
+/** Demo story: a popular billing printer that is out of stock (applied AFTER random stock so nothing else shifts). */
+const DEMO_OUT_OF_STOCK = ['TVS RP 3230 Thermal Printer']
+function forceDemoStockouts(items: Product[]) {
+  for (const p of items.filter((x) => DEMO_OUT_OF_STOCK.includes(x.name))) {
+    p.stockStatus = 'out_of_stock'
+    p.stockQty = 0
+    p.restockEta = new Date(Date.now() + 6 * 86_400_000).toISOString().slice(0, 10)
+  }
+}
+
 // ---------- main ----------
 async function main() {
   console.log('Trying WooCommerce Store API ...')
@@ -419,6 +429,7 @@ async function main() {
     })
     .sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name))
   assignStock(products)
+  forceDemoStockouts(products)
 
   writeFileSync(OUT, JSON.stringify(products, null, 2) + '\n')
 

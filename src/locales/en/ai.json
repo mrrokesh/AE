@@ -50,7 +50,8 @@
       "hot": "{{count}} hot leads need attention today.",
       "untouched": "{{count}} new enquiries are still untouched past the response time.",
       "staff": "{{name}} has the most waiting ({{count}}).",
-      "allClear": "Everything is on track. No missed follow-ups."
+      "allClear": "Everything is on track. No missed follow-ups.",
+      "restock": "Restock {{product}}: {{count}} enquiries this week while out of stock."
     },
     "risk": {
       "reason": "{{label}} lead, no contact for {{days}} days"
@@ -81,6 +82,14 @@
       "followToday_none": "No follow-ups due today.",
       "staff": "{{name}} has {{open}} open leads, {{overdue}} overdue:",
       "staff_none": "{{name}} has no open leads."
+    },
+    "alt": {
+      "explain": "{{alt}} is a good fit: it has {{points}}.",
+      "explainNone": "{{alt}} is the closest in-stock option to {{original}}.",
+      "caveat": "The one thing to know: {{diff}}.",
+      "fitsBudget": "It fits your {{budget}} budget.",
+      "aboveBudget": "It is a little above your {{budget}} budget.",
+      "joiner": " and "
     }
   },
   "aiPanel": {

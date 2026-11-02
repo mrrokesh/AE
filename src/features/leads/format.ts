@@ -1,4 +1,5 @@
 import type { TFunction } from 'i18next'
+import { formatDate } from '@/lib/dates'
 import { formatPhone } from '@/lib/format'
 import type { Activity, Lead, Product } from '@/types'
 
@@ -20,6 +21,8 @@ export const productSummary = (lead: Lead, products: Product[]) =>
 export function activityText(a: Activity, t: TFunction): string {
   const params: Record<string, string | number> = { ...a.params }
   if (typeof params.stage === 'string') params.stage = t(`stages.${params.stage}`)
+  if (typeof params.date === 'string')
+    params.date = params.date ? formatDate(params.date) : t('catalog.restockUnknownShort')
   const base = a.key ? t(a.key, params) : ''
   return [base, a.text].filter(Boolean).join(' · ')
 }

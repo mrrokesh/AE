@@ -9,7 +9,7 @@ import type { Activity, Lead, User } from '@/types'
 /** All lead writes go through here: API call first, then the client cache is updated. */
 
 const crm = () => useCrmStore.getState()
-const newAct = (a: Omit<Activity, 'id' | 'at'> & { at?: string }): Activity => ({
+export const newAct = (a: Omit<Activity, 'id' | 'at'> & { at?: string }): Activity => ({
   id: generateId('a'),
   at: new Date().toISOString(),
   ...a,
@@ -22,12 +22,12 @@ export class NextActionRequiredError extends Error {
   }
 }
 
-async function save(id: string, patch: Partial<Lead>): Promise<Lead> {
+export async function save(id: string, patch: Partial<Lead>): Promise<Lead> {
   const lead = await leadsApi.update(id, patch)
   crm().applyLead(lead)
   return lead
 }
-const getLead = (id: string): Lead => {
+export const getLead = (id: string): Lead => {
   const lead = crm().leads.find((l) => l.id === id)
   if (!lead) throw new Error(`Lead ${id} not found`)
   return lead
@@ -93,6 +93,7 @@ export async function createLead(
     lostReason: null,
     activities: acts,
     tags: input.urgent ? ['urgent'] : [],
+    waitlist: [],
   })
   crm().applyLead(lead)
   return lead

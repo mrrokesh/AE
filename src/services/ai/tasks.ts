@@ -10,6 +10,8 @@ export const AI_TASKS = {
   chatWithCRM: 'chatWithCRM',
   dailyBriefing: 'dailyBriefing',
   atRiskLeads: 'atRiskLeads',
+  /** Why an in-stock alternative suits the customer, from the match/difference data. */
+  explainAlternative: 'explainAlternative',
 } as const
 
 export type AiTask = (typeof AI_TASKS)[keyof typeof AI_TASKS]
