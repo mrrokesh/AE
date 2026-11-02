@@ -1,0 +1,374 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anita Enterprises CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: sticky top bar, three views (Dashboard, All leads, My leads) sharing one lead table; slide-in panel for a single lead. */
+:root{
+  --bg:#f6f4f9; --surface:#ffffff; --ink:#25222b; --muted:#645d6e; --line:#d9d3e2; --soft:#eeeaf4;
+  --accent:#7b2aa0; --accent-ink:#ffffff; --gold:#f2b01e; --gold-ink:#2b2100; --gold-bg:#fdf1cd;
+  --hot:#c8102e; --hot-bg:#fde8eb; --hot-solid:#c8102e; --warm:#7a4f00; --warm-bg:#fdf1cd;
+  --norm:#645d6e; --norm-bg:#e8e3ef; --good:#1a7f4b; --good-bg:#e0f3e8; --head:#2e2d2a;
+  --f-body:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif; --f-num:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#16121b; --surface:#211b2a; --ink:#f0ecf4; --muted:#a79fb2; --line:#3a3146; --soft:#2b2336;
+  --accent:#c48be4; --accent-ink:#240c34; --gold:#f5b82e; --gold-bg:#3a2d0e; --hot:#ff7387; --hot-bg:#3d1820;
+  --warm:#f5b82e; --warm-bg:#3a2d0e; --norm:#a79fb2; --norm-bg:#2d2538; --good:#5fd095; --good-bg:#143324; --head:#0e0b12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16121b; --surface:#211b2a; --ink:#f0ecf4; --muted:#a79fb2; --line:#3a3146; --soft:#2b2336;
+  --accent:#c48be4; --accent-ink:#240c34; --gold:#f5b82e; --gold-bg:#3a2d0e; --hot:#ff7387; --hot-bg:#3d1820;
+  --warm:#f5b82e; --warm-bg:#3a2d0e; --norm:#a79fb2; --norm-bg:#2d2538; --good:#5fd095; --good-bg:#143324; --head:#0e0b12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.45;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin-inline:auto;padding-block:0 48px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;letter-spacing:0;font-weight:600}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-size:17px;font-weight:700}
+.muted{color:var(--muted)}
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.brand{font-weight:700;font-size:18px;margin-right:auto}
+.brand b{display:block;font-size:22px;letter-spacing:.14em;line-height:1}.brand span{display:block;font-size:10px;letter-spacing:.34em;font-weight:500;margin-top:3px}.brand small{margin-top:4px;display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav button,.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:600}
+.nav button[aria-current="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,tr[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.demo{background:var(--warm-bg);color:var(--warm);font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;margin-top:14px}
+/* panels */
+.grid{display:grid;gap:16px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .l{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kpi .v{font-size:28px;font-weight:700;margin-top:4px}
+.kpi .s{font-size:13px;color:var(--muted)}
+.kpi.alert{border-color:var(--hot)}
+.kpi.alert .v{color:var(--hot)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.two{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);margin-top:16px}
+@media(max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+/* tables */
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;text-align:left;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr[tabindex]{cursor:pointer}
+tbody tr[tabindex]:hover{background:var(--soft)}
+td.r,th.r{text-align:right}
+tr.stripe-hot td:first-child{box-shadow:inset 3px 0 0 var(--hot)}
+tr.stripe-warm td:first-child{box-shadow:inset 3px 0 0 var(--warm)}
+/* chips */
+.chip{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.chip.hot{background:var(--hot-bg);color:var(--hot)} .chip.warm{background:var(--warm-bg);color:var(--warm)} .chip.normal{background:var(--norm-bg);color:var(--norm)}
+.chip.won{background:var(--good-bg);color:var(--good)} .chip.st{background:var(--soft);color:var(--ink)}
+.late{color:var(--hot);font-weight:700;font-size:12px}
+/* bars */
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.src{display:grid;grid-template-columns:90px 1fr 36px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+/* controls */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:10px}
+label.f{display:grid;gap:4px;font-size:12px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=number],input[type=search],select,textarea{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filters input,.filters select{width:auto;flex:1 1 150px}
+.switch{display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px}
+/* drawer */
+.veil{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:20}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--surface);z-index:21;overflow-y:auto;padding:20px max(16px,env(safe-area-inset-right,0px)) 32px 20px;padding-top:max(20px,env(safe-area-inset-top,0px));border-left:1px solid var(--line)}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.steps button{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 12px;cursor:pointer;font-weight:600}
+.steps button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+dl{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;margin:14px 0}
+dt{color:var(--muted);font-size:13px} dd{margin:0;font-weight:600}
+.note{border-left:3px solid var(--line);padding:2px 10px;margin:8px 0;font-size:14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;font-weight:600;z-index:30;max-width:90%}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+
+/* Anita brand skin: charcoal band, purple + seal gold, red-ribbon priority tags, square tables */
+.top{background:var(--head);color:#fff;box-shadow:0 0 0 100vmax var(--head);clip-path:inset(0 -100vmax);padding-block:16px 14px;margin-bottom:0;border-bottom:0}
+.top::after{content:"";position:absolute;left:-100vmax;right:-100vmax;bottom:0;height:4px;background:var(--gold)}
+.top::before{content:"";position:absolute;left:0;bottom:0;width:150px;height:4px;background:#8e3cb5;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);z-index:1}
+.brand{color:#fff}.brand b{font-weight:800;font-size:26px;letter-spacing:.16em}.brand span{color:#d9d2e3;letter-spacing:.42em;font-size:10px}.brand small{color:var(--gold);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.nav{gap:2px;align-self:flex-end}
+.nav button{background:transparent;color:#d9d2e3;border:0;border-bottom:3px solid transparent;border-radius:0;padding:8px 14px 9px;font-weight:600}
+.nav button:hover{color:#fff}
+.nav button[aria-current="true"]{background:transparent;color:#fff;border-color:var(--gold)}
+.top .btn.primary{background:var(--gold);color:var(--gold-ink);border:0;border-radius:3px;font-weight:700;letter-spacing:.03em}
+.top button:focus-visible{outline-color:var(--gold)}
+.btn,.card,input[type=text],input[type=number],input[type=search],select,textarea,.demo{border-radius:3px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+.demo{margin-top:16px;background:var(--gold-bg);color:var(--warm)}
+h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h2::after{content:"";display:block;width:26px;height:3px;background:var(--gold);margin-top:6px}
+.drawer h2{text-transform:none;letter-spacing:0;color:var(--ink)}.drawer h2::after{display:none}
+.kpis{gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.kpi{background:var(--surface);border:0;border-radius:0;padding:16px 18px}
+.kpi .v{color:var(--accent);font-weight:800}
+.kpi.alert{background:var(--hot-bg)}.kpi.alert .v{color:var(--hot)}
+th{background:var(--head);color:#fff;border-bottom:0;font-weight:600}
+tbody tr:nth-child(even){background:var(--soft)}
+tbody tr[tabindex]:hover{background:var(--gold-bg)}
+.chip{border-radius:2px}
+.chip.hot,.chip.warm,.chip.normal{border-radius:0;padding:3px 15px 3px 10px;clip-path:polygon(0 0,100% 0,calc(100% - 7px) 50%,100% 100%,0 100%);letter-spacing:.04em;text-transform:uppercase;font-size:11px}
+.chip.hot{background:var(--hot-solid);color:#fff}.chip.warm{background:var(--gold);color:var(--gold-ink)}.chip.normal{background:var(--norm-bg);color:var(--norm)}
+.bar{height:10px;border-radius:0}.bar i{background:var(--accent)}
+.steps button{border-radius:3px}.steps button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.drawer{border-left:4px solid var(--gold)}
+.sug{border:1px solid var(--line);border-radius:3px;padding:10px 12px;margin:8px 0;display:grid;gap:4px;background:var(--surface)}.sug-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.sug-h b{font-size:13px}.sug-m{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px}
+.toast{background:var(--head);color:#fff;border-bottom:3px solid var(--gold);border-radius:2px}
+.row .muted{font-size:13px}
+</style>
+<body><div class="wrap" id="app"></div>
+<script>
+/* ---------- sample data (clearly demo) ---------- */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const R=rng(20261102), pick=a=>a[Math.floor(R()*a.length)];
+const SOURCES={call:'Call',whatsapp:'WhatsApp',instagram:'Instagram',website:'Website form',walkin:'Walk-in'};
+const STAGES=[['new','New'],['contacted','Contacted'],['quoted','Quote sent'],['won','Won'],['lost','Lost']];
+const CATS=[ // name, typical value range
+ ['Laptop',38000,95000],['Gaming laptop',75000,160000],['Desktop PC',32000,85000],['Monitor',9000,28000],
+ ['Printer',7000,24000],['Keyboard / Mouse',500,4500],['Laptop bag',600,2500],['Charger / Cable',400,3000],['Pen drive / SSD',700,9000],['Cameras',3000,60000],['Speakers',800,15000],['Projectors',18000,80000],['CCTV',4000,60000],['Others',1000,20000]];
+const CAT_W=[22,6,10,10,8,18,8,9,9,6,4,4,6,4];
+const REPS=['Suresh Kumar','Ramesh Babu','Lakshmi Narayanan','Vijay Anand','Meena Sundaram','Karthik Raja','Priya Dharshini','Mohan Das','Selvi Murugan','Arun Prakash','Kavitha Rani','Senthil Nathan','Geetha Lakshmi','Ganesh Moorthy'].map((n,i)=>({id:i+1,name:n,rate:Math.round(18+R()*22),years:15+Math.floor(R()*6)}));
+const FIRST=['Rajesh','Anitha','Mohammed','Sathish','Divya','Imran','Pooja','Balaji','Nandhini','Harish','Farhana','Dinesh','Revathi','Prakash','Sangeetha','Joseph','Gopal','Shanthi','Murali','Ayesha','Siva','Deepa','Naveen','Uma'];
+const LAST=['Kumar','S','Rahman','Krishnan','Iyer','Basha','Devi','Raj','Pillai','Nair','Sheikh','Babu','Selvam','Mohan'];
+function wpick(){let t=R()*CAT_W.reduce((a,b)=>a+b),i=0;while((t-=CAT_W[i])>0)i++;return CATS[i]}
+const leads=[];
+for(let i=0;i<150;i++){
+  const c=wpick(), v=Math.round((c[1]+R()*(c[2]-c[1]))/100)*100;
+  const mins=Math.floor(R()*R()*560)+1;
+  const l={id:i+1,name:pick(FIRST)+' '+pick(LAST),phone:'98'+String(Math.floor(R()*1e8)).padStart(8,'0'),
+    source:pick(['call','call','whatsapp','whatsapp','whatsapp','instagram','instagram','website','walkin']),
+    cat:c[0],value:v,status:'new',rep:null,mins,notes:[],invoice:null};
+  const r=R(); // older leads have progressed
+  if(mins>240){ l.status=r<.35?'contacted':r<.6?'quoted':r<.72?'won':r<.8?'lost':'new'; }
+  else if(mins>90 && r<.4){ l.status='contacted'; }
+  if(l.status==='won') l.invoice='ANT/'+(2200+i);
+  leads.push(l);
+}
+// pre-assign everything older than 45 min, leave the newest unassigned
+leads.forEach(l=>{ if(l.mins>45 || l.status!=='new') l.rep=REPS[Math.floor(R()*REPS.length)].id; });
+leads.sort((a,b)=>b.mins-a.mins).forEach((l,i)=>l.id=i+1);
+/* product specifications: what the salesperson needs to identify the exact variant */
+const BR_PC=['HP','Dell','Lenovo','Asus','Acer'], CPU_L=['Intel Core i3','Intel Core i5','Intel Core i7','AMD Ryzen 5','AMD Ryzen 7'], RAM=['8GB','16GB','32GB'], SSD=['256GB SSD','512GB SSD','1TB SSD'];
+const SPECS={
+ 'Laptop':[['Brand',[...BR_PC,'Apple','MSI']],['CPU',[...CPU_L,'Apple M-series']],['RAM',RAM],['Storage',SSD],['GPU',['Integrated','NVIDIA MX / RTX 2050']],['Screen',['14"','15.6"','16"']]],
+ 'Gaming laptop':[['Brand',['Asus ROG','MSI','Lenovo Legion','HP Victus','Acer Nitro','Dell G15']],['CPU',['Intel Core i5','Intel Core i7','Intel Core i9','AMD Ryzen 5','AMD Ryzen 7']],['GPU',['RTX 3050','RTX 4050','RTX 4060','RTX 4070']],['RAM',['16GB','32GB']],['Storage',['512GB SSD','1TB SSD','2TB SSD']],['Refresh rate',['120Hz','144Hz','165Hz']]],
+ 'Desktop PC':[['Type',['Branded','Assembled','All-in-one']],['Brand',['HP','Dell','Lenovo','Asus','Custom build']],['CPU',CPU_L],['RAM',RAM],['Storage',['512GB SSD','1TB SSD','1TB HDD + 256GB SSD']],['GPU',['Integrated','GTX 1650','RTX 3050','RTX 4060']]],
+ 'Monitor':[['Brand',['Dell','HP','LG','Samsung','Acer','BenQ']],['Size',['22"','24"','27"','32"']],['Panel',['IPS','VA','TN']],['Resolution',['Full HD','QHD','4K']],['Refresh rate',['60Hz','75Hz','144Hz']]],
+ 'Printer':[['Brand',['HP','Canon','Epson','Brother']],['Type',['Inkjet','Ink tank','Laser','Multifunction laser']],['Output',['Black & white','Colour']],['Connectivity',['USB only','Wi-Fi']]],
+ 'Keyboard / Mouse':[['Item',['Keyboard','Mouse','Keyboard + mouse combo']],['Brand',['Logitech','HP','Dell','Zebronics']],['Connection',['Wired','Wireless 2.4G','Bluetooth']]],
+ 'Laptop bag':[['Brand',['Wildcraft','HP','Dell','Lenovo','American Tourister']],['Fits',['14"','15.6"','17"']],['Type',['Backpack','Sleeve','Messenger']]],
+ 'Charger / Cable':[['Item',['Laptop charger','USB-C cable','HDMI cable','Power bank']],['Brand',['HP','Dell','Lenovo','Anker','Zebronics']],['Rating',['45W','65W','90W','Not applicable']]],
+ 'Pen drive / SSD':[['Item',['Pen drive','External SSD','Internal SSD','External HDD']],['Brand',['SanDisk','Samsung','WD','Kingston']],['Capacity',['64GB','128GB','256GB','512GB','1TB']]],
+ 'Cameras':[['Type',['DSLR','Mirrorless','Action camera','Instant camera']],['Brand',['Canon','Nikon','Sony','GoPro','Fujifilm']],['Resolution',['20 MP','24 MP','26 MP','4K video']]],
+ 'Speakers':[['Type',['Bluetooth','Home theatre','Soundbar','PC speakers']],['Brand',['boAt','JBL','Sony','Zebronics','Philips']],['Power',['10W','40W','100W and above']]],
+ 'Projectors':[['Brand',['Epson','BenQ','Acer','ViewSonic']],['Brightness',['3000 lumens','4000 lumens','5000 lumens']],['Resolution',['SVGA','XGA','Full HD']],['Use',['Classroom','Office','Home theatre']]],
+ 'CCTV':[['Type',['Dome camera','Bullet camera','PTZ camera','Complete kit']],['Brand',['Hikvision','CP Plus','Dahua']],['Resolution',['2 MP','5 MP','4K']],['Channels',['1','2','4','8','16']]],
+ 'Others':[['Item',['Router','UPS','Webcam','Headphones','Other']],['Details',[]]]};
+const SR=rng(77);
+leads.forEach(l=>{l.spec={};(SPECS[l.cat]||[]).forEach(([f,o])=>{l.spec[f]=o.length?o[Math.floor(SR()*o.length)]:''})});
+const specLine=l=>[l.cat,...Object.values(l.spec||{}).filter(Boolean).slice(0,4)].join(' · ');
+function specInputs(cat,vals,attr){return `<div class="specs">${(SPECS[cat]||[]).map(([f,o])=>`<label class="f">${f}${o.length?`<select ${attr}="${f}">${o.map(x=>`<option ${vals&&vals[f]===x?'selected':''}>${x}</option>`).join('')}</select>`:`<input type="text" ${attr}="${f}" value="${esc(vals&&vals[f]||'')}" placeholder="Model, size, colour">`}</label>`).join('')}</div>`}
+function collectSpec(){const o={};document.querySelectorAll('[data-fspec]').forEach(e=>o[e.dataset.fspec]=e.value);return o}
+/* sample stock + nearest-match suggestions */
+const ORD=new Set(['RAM','Storage','Screen','Size','Capacity','Resolution','Refresh rate','Brightness','Power','Rating','Fits','Channels','GPU']), WT={CPU:1.5,GPU:1.5,Item:3,Type:2};
+const MARGIN={'Laptop':10,'Gaming laptop':11,'Desktop PC':14,'Monitor':12,'Printer':15,'Keyboard / Mouse':30,'Laptop bag':35,'Charger / Cable':32,'Pen drive / SSD':18,'Cameras':12,'Speakers':22,'Projectors':15,'CCTV':25,'Others':20};
+const SK=rng(303), STOCK=[];
+CATS.forEach(c=>{for(let i=0;i<14;i++){const spec={},rs=[];SPECS[c[0]].forEach(([n,o])=>{if(!o.length){spec[n]='';return}const k=Math.floor(SK()*o.length);spec[n]=o[k];if(ORD.has(n)||n==='CPU')rs.push(o.length>1?k/(o.length-1):.5)});
+  const rank=rs.length?rs.reduce((a,b)=>a+b)/rs.length:SK();
+  const price=Math.round((c[1]+(c[2]-c[1])*Math.min(1,Math.max(0,.1+.75*rank+(SK()-.5)*.25)))/100)*100;
+  STOCK.push({cat:c[0],spec,price,qty:SK()<.15?0:1+Math.floor(SK()*9),margin:MARGIN[c[0]]+Math.floor(SK()*4)})}});
+function fieldScore(n,o,a,b){if(a===b)return 1;if(ORD.has(n)){const i=o.indexOf(a),j=o.indexOf(b);return i<0||j<0?0:Math.max(0,1-Math.abs(i-j)/Math.max(1,o.length-1))*.8}
+  if(n==='CPU'&&a.split(' ').slice(0,2).join(' ')===b.split(' ').slice(0,2).join(' '))return .5;return 0}
+function nearest(l){const F=(SPECS[l.cat]||[]).filter(x=>x[1].length),tot=F.reduce((a,[n])=>a+(WT[n]||1),0)||1;
+  return STOCK.filter(x=>x.cat===l.cat&&x.qty>0).map(x=>{let got=0;F.forEach(([n,o])=>got+=(WT[n]||1)*fieldScore(n,o,x.spec[n],l.spec[n]));
+    const bud=l.value?Math.max(0,1-Math.abs(x.price-l.value)/l.value):1;
+    return{x,pct:Math.round(got/tot*100),rank:.85*got/tot+.15*bud,diffs:F.filter(([n])=>x.spec[n]!==l.spec[n]).map(([n])=>n+': '+x.spec[n]+' (asked '+l.spec[n]+')')}})
+  .sort((a,b)=>b.rank-a.rank||b.x.margin-a.x.margin).slice(0,3)}
+function suggestHtml(l){const m=nearest(l);if(!m.length)return '<div class="muted">Nothing in stock for this product right now.</div>';
+  return m.map(({x,pct,diffs})=>`<div class="sug"><div class="sug-h"><b>${esc(Object.values(x.spec).filter(Boolean).join(' · '))}</b><span class="chip ${pct===100?'won':'st'}">${pct===100?'Exact match':pct+'% match'}</span></div>
+   <div class="sug-m"><span class="num">${inr(x.price)}</span><span>${x.qty} in stock</span>${l.value&&x.price>l.value*1.1?`<span class="late">${inr(x.price-l.value)} above budget</span>`:''}</div>
+   ${diffs.length?`<div class="muted" style="font-size:12px">Differs: ${esc(diffs.join('; '))}</div>`:''}</div>`).join('')}
+function keepForm(){const g=i=>document.getElementById(i),ids=['nName','nPhone','nSrc'],k=ids.map(i=>g(i).value);draw();ids.forEach((i,j)=>g(i).value=k[j])}
+
+/* ---------- state ---------- */
+const S={view:'dash',me:1,hot:40000,warm:8000,auto:false,q:'',fSrc:'',fCat:'',fTier:'',fStatus:'open',open:null,adding:false,toast:'',tmp:{val:55000,cat:'Laptop'}};
+const tier=l=>l.value>=S.hot?'hot':l.value>=S.warm?'warm':'normal';
+const TN={hot:'Hot',warm:'Warm',normal:'Normal'}, TO={hot:0,warm:1,normal:2};
+const isOpen=l=>l.status!=='won'&&l.status!=='lost';
+const inr=v=>'₹'+Number(v).toLocaleString('en-IN');
+const inrShort=v=>v>=1e7?'₹'+(v/1e7).toFixed(2)+' Cr':v>=1e5?'₹'+(v/1e5).toFixed(1)+' L':inr(v);
+const repName=id=>id?REPS.find(r=>r.id===id).name:null;
+const ago=m=>m<60?m+' min':Math.floor(m/60)+' h '+(m%60)+' m';
+const overdue=l=>l.status==='new'&&l.mins>(tier(l)==='hot'?15:tier(l)==='warm'?60:240);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const byPriority=(a,b)=>TO[tier(a)]-TO[tier(b)]||b.value-a.value||b.mins-a.mins;
+
+/* ---------- auto assignment ---------- */
+function autoAssign(){
+  const un=leads.filter(l=>!l.rep&&isOpen(l)).sort(byPriority); if(!un.length)return 0;
+  const load=Object.fromEntries(REPS.map(r=>[r.id,{open:0,hot:0}]));
+  leads.filter(l=>l.rep&&isOpen(l)).forEach(l=>{load[l.rep].open++; if(tier(l)==='hot')load[l.rep].hot++});
+  const closers=[...REPS].sort((a,b)=>b.rate-a.rate).slice(0,6); // best close-rate reps take hot leads
+  un.forEach(l=>{
+    const pool=tier(l)==='hot'?closers:REPS;
+    const r=pool.reduce((best,x)=>{
+      const a=tier(l)==='hot'?load[x.id].hot*3+load[x.id].open:load[x.id].open, b=tier(l)==='hot'?load[best.id].hot*3+load[best.id].open:load[best.id].open;
+      return a<b?x:best});
+    l.rep=r.id; load[r.id].open++; if(tier(l)==='hot')load[r.id].hot++;
+  });
+  return un.length;
+}
+function toast(t){S.toast=t;draw();setTimeout(()=>{S.toast='';draw()},2600)}
+
+/* ---------- views ---------- */
+const chip=l=>`<span class="chip ${tier(l)}">${TN[tier(l)]}</span>`;
+function leadTable(list,{showRep=true,limit=60}={}){
+  if(!list.length)return '<div class="empty">No leads match these filters.</div>';
+  const rows=list.slice(0,limit).map(l=>`<tr tabindex="0" data-open="${l.id}" class="stripe-${tier(l)}">
+    <td>${chip(l)}</td><td><b>${esc(l.name)}</b><div class="muted" style="font-size:12px">${esc(specLine(l))}</div></td>
+    <td class="r num">${inr(l.value)}</td><td>${SOURCES[l.source]}</td>
+    <td><span class="chip ${l.status==='won'?'won':'st'}">${STAGES.find(s=>s[0]===l.status)[1]}</span></td>
+    ${showRep?`<td>${l.rep?esc(repName(l.rep)):'<span class="late">Unassigned</span>'}</td>`:''}
+    <td class="num">${ago(l.mins)}${overdue(l)?' <span class="late">Overdue</span>':''}</td></tr>`).join('');
+  return `<div class="scroll"><table><thead><tr><th>Priority</th><th>Customer</th><th class="r">Value</th><th>Source</th><th>Stage</th>${showRep?'<th>Salesperson</th>':''}<th>Waiting</th></tr></thead><tbody>${rows}</tbody></table></div>
+  ${list.length>limit?`<p class="muted" style="margin:10px 0 0">Showing top ${limit} of ${list.length}. Highest priority first.</p>`:''}`;
+}
+function filtered(base){
+  const q=S.q.toLowerCase();
+  return base.filter(l=>(!q||(l.name+l.phone+specLine(l)).toLowerCase().includes(q))&&(!S.fSrc||l.source===S.fSrc)&&(!S.fCat||l.cat===S.fCat)&&(!S.fTier||tier(l)===S.fTier)
+    &&(S.fStatus==='open'?isOpen(l):S.fStatus==='all'?true:l.status===S.fStatus)).sort(byPriority);
+}
+function filterBar(){
+  return `<div class="filters"><input type="search" id="q" placeholder="Search name, phone, product" value="${esc(S.q)}" aria-label="Search">
+  <select id="fTier" aria-label="Priority"><option value="">All priorities</option>${['hot','warm','normal'].map(t=>`<option value="${t}" ${S.fTier===t?'selected':''}>${TN[t]}</option>`).join('')}</select>
+  <select id="fCat" aria-label="Product enquired"><option value="">All products</option>${CATS.map(c=>`<option ${S.fCat===c[0]?'selected':''}>${c[0]}</option>`).join('')}</select>
+  <select id="fSrc" aria-label="Source"><option value="">All sources</option>${Object.entries(SOURCES).map(([k,v])=>`<option value="${k}" ${S.fSrc===k?'selected':''}>${v}</option>`).join('')}</select>
+  <select id="fStatus" aria-label="Stage"><option value="open" ${S.fStatus==='open'?'selected':''}>Open leads</option><option value="all" ${S.fStatus==='all'?'selected':''}>All leads</option>${STAGES.map(s=>`<option value="${s[0]}" ${S.fStatus===s[0]?'selected':''}>${s[1]}</option>`).join('')}</select></div>`;
+}
+function dash(){
+  const open=leads.filter(isOpen), un=open.filter(l=>!l.rep).sort(byPriority);
+  const hotOpen=open.filter(l=>tier(l)==='hot'), late=open.filter(overdue);
+  const pipe=open.reduce((s,l)=>s+l.value,0), won=leads.filter(l=>l.status==='won');
+  const srcCount=Object.keys(SOURCES).map(k=>[k,leads.filter(l=>l.source===k).length]), mx=Math.max(...srcCount.map(x=>x[1]));
+  const load=REPS.map(r=>{const m=open.filter(l=>l.rep===r.id);return{r,n:m.length,hot:m.filter(l=>tier(l)==='hot').length,val:m.reduce((s,l)=>s+l.value,0)}}).sort((a,b)=>b.val-a.val);
+  const mxn=Math.max(...load.map(x=>x.n));
+  return `<div class="grid kpis">
+   <div class="kpi"><div class="l">Leads today</div><div class="v num">${leads.length}</div><div class="s">${open.length} still open</div></div>
+   <div class="kpi ${un.length?'alert':''}"><div class="l">Not assigned</div><div class="v num">${un.length}</div><div class="s">${un.filter(l=>tier(l)==='hot').length} of them hot</div></div>
+   <div class="kpi"><div class="l">Hot leads open</div><div class="v num">${hotOpen.length}</div><div class="s">${inrShort(hotOpen.reduce((s,l)=>s+l.value,0))} potential</div></div>
+   <div class="kpi ${late.length?'alert':''}"><div class="l">Waiting too long</div><div class="v num">${late.length}</div><div class="s">Hot: 15 min, Warm: 1 h, Normal: 4 h</div></div>
+   <div class="kpi"><div class="l">Open pipeline</div><div class="v num">${inrShort(pipe)}</div><div class="s">${won.length} won today, ${inrShort(won.reduce((s,l)=>s+l.value,0))}</div></div></div>
+
+  <div class="grid two">
+   <div class="card"><div class="row"><div><h2>Assign new leads</h2><div class="muted">Hot leads go to the best closers first. Others go to whoever has the fewest open leads.</div></div>
+     <button class="btn primary" id="doAssign" ${un.length?'':'disabled'}>Assign ${un.length} leads automatically</button></div>
+     <label class="switch"><input type="checkbox" id="autoSw" ${S.auto?'checked':''}> Assign new leads automatically as they arrive</label>
+     <div style="margin-top:14px">${un.length?leadTable(un,{showRep:false,limit:8}):'<div class="empty">Every lead has a salesperson.</div>'}</div>
+     ${un.length?'<p class="muted" style="margin:8px 0 0">To assign by hand, open a lead and choose a salesperson.</p>':''}</div>
+   <div class="card"><h2>What counts as high priority</h2><div class="muted">Change a number and every list re-sorts instantly.</div>
+     <div class="rules"><label class="f">Hot if value is at least (₹)<input type="number" id="rHot" value="${S.hot}" step="1000" min="0"></label>
+     <label class="f">Warm if value is at least (₹)<input type="number" id="rWarm" value="${S.warm}" step="500" min="0"></label></div>
+     <p class="muted" style="margin-bottom:0">Laptops, gaming laptops and desktops land in Hot. Chargers, bags and mice stay Normal, so the team's first calls go where the margin is.</p>
+     <h2 style="margin-top:20px">Where leads come from</h2>
+     ${srcCount.map(([k,n])=>`<div class="src"><span>${SOURCES[k]}</span><div class="bar"><i style="width:${n/mx*100}%"></i></div><b class="num">${n}</b></div>`).join('')}</div></div>
+
+  <div class="card" style="margin-top:16px"><div class="row"><h2>Team workload</h2><span class="muted">${REPS.length} of 52 salespeople shown</span></div>
+   <div class="scroll"><table><thead><tr><th>Salesperson</th><th class="r">Open</th><th class="r">Hot</th><th>Load</th><th class="r">Pipeline value</th><th class="r">Close rate</th></tr></thead><tbody>
+   ${load.map(x=>`<tr><td><b>${esc(x.r.name)}</b><div class="muted" style="font-size:12px">${x.r.years} years experience</div></td><td class="r num">${x.n}</td><td class="r num">${x.hot}</td>
+     <td><div class="bar"><i style="width:${x.n/mxn*100}%"></i></div></td><td class="r num">${inrShort(x.val)}</td><td class="r num">${x.r.rate}%</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function allLeads(){const l=filtered(leads);return `<div class="card" style="margin-top:20px"><div class="row"><h2>All leads</h2><span class="muted">${l.length} shown, highest priority first</span></div>${filterBar()}${leadTable(l)}</div>`}
+function mine(){
+  const l=filtered(leads.filter(x=>x.rep===S.me)), mi=leads.filter(x=>x.rep===S.me&&isOpen(x));
+  return `<div class="card" style="margin-top:20px"><div class="row"><div><h2>My leads</h2><div class="muted">Call from the top. The list is already in the right order.</div></div>
+   <label class="f" style="min-width:220px">Logged in as<select id="meSel">${REPS.map(r=>`<option value="${r.id}" ${r.id===S.me?'selected':''}>${esc(r.name)}</option>`).join('')}</select></label></div>
+   <div class="grid kpis" style="margin:0 0 14px"><div class="kpi"><div class="l">Open</div><div class="v num">${mi.length}</div></div>
+   <div class="kpi"><div class="l">Hot to call</div><div class="v num">${mi.filter(x=>tier(x)==='hot'&&x.status==='new').length}</div></div>
+   <div class="kpi"><div class="l">My pipeline</div><div class="v num">${inrShort(mi.reduce((s,x)=>s+x.value,0))}</div></div></div>
+   ${filterBar()}${leadTable(l,{showRep:false})}</div>`;
+}
+function drawer(){
+  if(S.adding){const v=+S.tmp.val||0, t=v>=S.hot?'hot':v>=S.warm?'warm':'normal';
+    return `<div class="veil" data-close></div><aside class="drawer" role="dialog" aria-label="New lead"><div class="row"><h2>New lead</h2><button class="btn" data-close>Close</button></div>
+    <div class="grid" style="gap:12px"><label class="f">Customer name<input type="text" id="nName" placeholder="e.g. Rajesh Kumar"></label>
+    <label class="f">Phone<input type="text" id="nPhone" placeholder="10-digit mobile"></label>
+    <label class="f">Came from<select id="nSrc">${Object.entries(SOURCES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label>
+    <label class="f">Looking for<select id="nCat">${CATS.map(c=>`<option ${c[0]===S.tmp.cat?'selected':''}>${c[0]}</option>`).join('')}</select></label>
+    ${specInputs(S.tmp.cat,null,'data-fspec')}
+    <label class="f">Expected value (₹)<input type="number" id="nVal" value="${S.tmp.val}" step="500"></label>
+    <div class="card" style="background:var(--soft)">Priority will be <span class="chip ${t}">${TN[t]}</span> ${t==='hot'?'<div class="muted">Goes to a top closer straight away.</div>':''}</div>
+    <button class="btn primary" id="saveLead">Add lead and assign</button></div></aside>`}
+  const l=leads.find(x=>x.id===S.open); if(!l)return '';
+  return `<div class="veil" data-close></div><aside class="drawer" role="dialog" aria-label="Lead details">
+   <div class="row"><div>${chip(l)} <span class="chip st">${SOURCES[l.source]}</span></div><button class="btn" data-close>Close</button></div>
+   <h2 style="font-size:22px">${esc(l.name)}</h2>
+   <dl><dt>Phone</dt><dd class="num">${l.phone}</dd><dt>Looking for</dt><dd>${esc(l.cat)}</dd><dt>Expected value</dt><dd class="num">${inr(l.value)}</dd>
+   <dt>Waiting</dt><dd>${ago(l.mins)}${overdue(l)?' <span class="late">Overdue</span>':''}</dd>
+   <dt>Salesperson</dt><dd><select id="repSel" style="max-width:240px"><option value="0">Unassigned</option>${REPS.map(r=>`<option value="${r.id}" ${r.id===l.rep?'selected':''}>${esc(r.name)}</option>`).join('')}</select></dd></dl>
+   <h3 style="font-size:14px">Product details</h3><div style="margin:8px 0 16px">${specInputs(l.cat,l.spec,'data-spec')}</div>
+   <h3 style="font-size:14px">Nearest in stock</h3><div style="margin:8px 0 16px">${suggestHtml(l)}</div>
+   <h3 style="font-size:14px">Stage</h3><div class="steps">${STAGES.map(s=>`<button data-stage="${s[0]}" aria-pressed="${l.status===s[0]}">${s[1]}</button>`).join('')}</div>
+   ${l.status==='won'?`<div class="card" style="background:var(--good-bg);color:var(--good)"><b>Billed in Tally</b><div>Invoice <span class="num">${l.invoice||'ANT/2399'}</span></div><div style="font-size:13px">Invoice linked from Tally.</div></div>`:''}
+   <h3 style="font-size:14px;margin-top:18px">Notes</h3>
+   ${l.notes.length?l.notes.map(n=>`<div class="note">${esc(n)}</div>`).join(''):'<div class="muted">No notes yet.</div>'}
+   <div style="display:flex;gap:8px;margin-top:10px"><input type="text" id="noteIn" placeholder="e.g. Wants i5, 16 GB, asked for EMI"><button class="btn" id="addNote">Add</button></div></aside>`;
+}
+function draw(){
+  const f=document.activeElement&&document.activeElement.id, pos=f&&document.activeElement.selectionStart;
+  document.getElementById('app').innerHTML=`<header class="top"><div class="brand"><b>ANITA</b><span>ENTERPRISES</span><small>Lead desk · Salem</small></div>
+   <nav class="nav" aria-label="Views">${[['dash','Manager dashboard'],['all','All leads'],['mine','My leads']].map(([k,t])=>`<button data-view="${k}" aria-current="${S.view===k}">${t}</button>`).join('')}</nav>
+   <button class="btn primary" id="newLead">+ New lead</button></header>
+   
+   ${S.view==='dash'?dash():S.view==='all'?allLeads():mine()}${drawer()}${S.toast?`<div class="toast" role="status">${esc(S.toast)}</div>`:''}`;
+  if(f){const e=document.getElementById(f);if(e){e.focus();if(pos!=null&&e.setSelectionRange&&e.type!=='number')try{e.setSelectionRange(pos,pos)}catch(_){}}}
+}
+
+/* ---------- events ---------- */
+const app=document.getElementById('app');
+app.addEventListener('click',e=>{
+  const t=e.target.closest('[data-view],[data-open],[data-close],[data-stage],#doAssign,#newLead,#saveLead,#addNote');if(!t)return;
+  if(t.dataset.view){S.view=t.dataset.view;S.open=null;draw()}
+  else if(t.dataset.open){S.open=+t.dataset.open;draw()}
+  else if(t.hasAttribute('data-close')){S.open=null;S.adding=false;draw()}
+  else if(t.dataset.stage){const l=leads.find(x=>x.id===S.open);l.status=t.dataset.stage;if(l.status==='won'&&!l.invoice)l.invoice='ANT/'+(2400+l.id);draw()}
+  else if(t.id==='doAssign'){toast(autoAssign()+' leads assigned')}
+  else if(t.id==='newLead'){S.adding=true;S.open=null;draw()}
+  else if(t.id==='addNote'){const i=document.getElementById('noteIn');if(i.value.trim()){leads.find(x=>x.id===S.open).notes.push(i.value.trim());draw()}}
+  else if(t.id==='saveLead'){
+    const name=document.getElementById('nName').value.trim()||'Walk-in customer';
+    const l={id:leads.length+1,name,phone:document.getElementById('nPhone').value||'—',source:document.getElementById('nSrc').value,cat:document.getElementById('nCat').value,
+      value:+document.getElementById('nVal').value||0,status:'new',rep:null,mins:1,notes:[],invoice:null,spec:collectSpec()};
+    leads.push(l);autoAssign();S.adding=false;S.open=l.id;toast('Added and assigned to '+repName(l.rep));
+  }
+});
+app.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('tr[data-open]')){e.preventDefault();S.open=+e.target.dataset.open;draw()}if(e.key==='Escape'){S.open=null;S.adding=false;draw()}});
+app.addEventListener('change',e=>{
+  const t=e.target,id=t.id;
+  if(t.dataset.spec){leads.find(x=>x.id===S.open).spec[t.dataset.spec]=t.value;draw();return}
+  if(id==='fTier')S.fTier=t.value;else if(id==='fSrc')S.fSrc=t.value;else if(id==='fCat')S.fCat=t.value;else if(id==='fStatus')S.fStatus=t.value;
+  else if(id==='meSel')S.me=+t.value;
+  else if(id==='repSel'){leads.find(x=>x.id===S.open).rep=+t.value||null}
+  else if(id==='autoSw'){S.auto=t.checked;if(S.auto){const n=autoAssign();toast(n?'Auto-assign is on. '+n+' leads assigned':'Auto-assign is on')}}
+  else if(id==='nCat'){S.tmp.cat=t.value;const c=CATS.find(x=>x[0]===t.value);S.tmp.val=Math.round((c[1]+c[2])/2/500)*500;keepForm();return}
+  else return;
+  draw();
+});
+app.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.id==='q'){S.q=t.value;draw()}
+  else if(t.id==='rHot'){S.hot=Math.max(0,+t.value||0);draw()}
+  else if(t.id==='rWarm'){S.warm=Math.max(0,+t.value||0);draw()}
+  else if(t.id==='nVal'){S.tmp.val=t.value;const keep={n:document.getElementById('nName').value,p:document.getElementById('nPhone').value,s:document.getElementById('nSrc').value};draw();
+    document.getElementById('nName').value=keep.n;document.getElementById('nPhone').value=keep.p;document.getElementById('nSrc').value=keep.s}
+});
+draw();
+</script>
+</html>
