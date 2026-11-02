@@ -145,6 +145,22 @@
       "none": "No stock-out demand right now.",
       "total": "{{leads}} leads, about {{value}} at risk"
     },
-    "restockUnknownShort": "date not known"
+    "restockUnknownShort": "date not known",
+    "group": {
+      "label": "Product section",
+      "printers": "Printers",
+      "speakers": "Speakers",
+      "accessories": "Laptop accessories"
+    },
+    "filter": {
+      "type": "Printer type",
+      "allTypes": "All types",
+      "connectivity": "Connectivity",
+      "anyConnectivity": "Any connectivity",
+      "colour": "Colour",
+      "anyColour": "Any colour"
+    },
+    "noAccessoriesTitle": "No laptop accessories yet",
+    "noAccessoriesText": "Laptop accessories are not in the catalogue yet. Add them and they will show up here."
   }
 }

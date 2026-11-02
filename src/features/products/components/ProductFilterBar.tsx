@@ -1,10 +1,11 @@
 import { Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Select } from '@/components/ui'
-import { PRODUCT_CATEGORIES } from '@/constants'
 import { cn } from '@/lib/cn'
 import type { ProductFilters, ProductSort } from '../filters'
 import type { stockCounts } from '../filters'
+import type { useProductBrowser } from '../useProductBrowser'
+import { ProductGroupTabs } from './ProductGroupTabs'
 
 type Counts = ReturnType<typeof stockCounts>
 const STOCK_TABS = ['', 'in_stock', 'low', 'out_of_stock'] as const
@@ -13,16 +14,29 @@ export function ProductFilterBar({
   filters,
   brands,
   counts,
+  groups,
+  types,
+  connectivity,
   onChange,
 }: {
   filters: ProductFilters
   brands: string[]
   counts: Counts
+  groups: ReturnType<typeof useProductBrowser>['groups']
+  types: ReturnType<typeof useProductBrowser>['types']
+  connectivity: ReturnType<typeof useProductBrowser>['connectivity']
   onChange: (patch: Partial<ProductFilters>) => void
 }) {
   const { t } = useTranslation()
   return (
     <div className="mb-4 space-y-3">
+      <ProductGroupTabs
+        filters={filters}
+        groups={groups}
+        types={types}
+        connectivity={connectivity}
+        onChange={onChange}
+      />
       <div role="tablist" aria-label={t('catalog.statusLabel')} className="flex flex-wrap gap-1.5">
         {STOCK_TABS.map((s) => (
           <button
@@ -41,7 +55,7 @@ export function ProductFilterBar({
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="grid grid-cols-2 gap-2 lg:grid-cols-[2fr_1fr_1fr]">
         <div className="relative col-span-2 lg:col-span-1">
           <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-fg-subtle" />
           <input
@@ -52,16 +66,6 @@ export function ProductFilterBar({
             className="h-9 w-full rounded-md border border-border bg-surface pr-3 pl-8 text-sm placeholder:text-fg-subtle focus:border-brand-500 focus:outline-2 focus:outline-brand-500/30"
           />
         </div>
-        <Select
-          aria-label={t('catalog.col.category')}
-          value={filters.category}
-          onChange={(e) => onChange({ category: e.target.value })}
-          placeholder={t('catalog.allCategories')}
-          options={PRODUCT_CATEGORIES.filter((c) => c.id !== 'accessory').map((c) => ({
-            value: c.id,
-            label: t(`categories.${c.id}`),
-          }))}
-        />
         <Select
           aria-label={t('catalog.brand')}
           value={filters.brand}

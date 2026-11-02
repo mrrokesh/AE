@@ -45,14 +45,25 @@ export default function Products() {
         filters={b.filters}
         brands={b.brands}
         counts={b.counts}
+        groups={b.groups}
+        types={b.types}
+        connectivity={b.connectivity}
         onChange={b.update}
       />
       {b.total === 0 ? (
         <Card>
           <EmptyState
             icon={PackageSearch}
-            title={t('catalog.emptyTitle')}
-            description={t('catalog.emptyText')}
+            title={
+              b.filters.group === 'accessories' && b.groups.accessories === 0
+                ? t('catalog.noAccessoriesTitle')
+                : t('catalog.emptyTitle')
+            }
+            description={
+              b.filters.group === 'accessories' && b.groups.accessories === 0
+                ? t('catalog.noAccessoriesText')
+                : t('catalog.emptyText')
+            }
           />
         </Card>
       ) : (
