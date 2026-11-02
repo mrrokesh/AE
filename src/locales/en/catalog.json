@@ -1,0 +1,66 @@
+{
+  "catalog": {
+    "description": "{{count}} products from anitaenterprises.in. Prices in ₹.",
+    "search": "Search name or brand",
+    "all": "All",
+    "allCategories": "All categories",
+    "allBrands": "All brands",
+    "brand": "Brand",
+    "sort": {
+      "label": "Sort by",
+      "featured": "Featured",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low"
+    },
+    "stock": {
+      "in_stock": "In stock",
+      "low": "Low stock",
+      "out_of_stock": "Out of stock",
+      "lowQty_one": "Only {{count}} left",
+      "lowQty_other": "Only {{count}} left"
+    },
+    "restockOn": "Back by {{date}}",
+    "restockUnknown": "Restock date not set",
+    "qty": "Quantity in stock",
+    "statusLabel": "Stock status",
+    "restockDate": "Restock date",
+    "stockUpdated": "Stock updated: {{name}}",
+    "off": "{{pct}}% off",
+    "noSpecs": "Specs not listed",
+    "view": {
+      "grid": "Grid view",
+      "table": "Table view"
+    },
+    "col": {
+      "product": "Product",
+      "price": "Price",
+      "stock": "Stock",
+      "specs": "Specs",
+      "edit": "Update stock",
+      "category": "Category"
+    },
+    "showing": "Showing {{shown}} of {{total}}",
+    "showMore": "Show more",
+    "emptyTitle": "No products match",
+    "emptyText": "Try another search or clear the filters.",
+    "spec": {
+      "printWidth": "{{v}} print width",
+      "color": "Colour",
+      "mono": "Mono",
+      "autoCutter": "Auto cutter",
+      "duty": "{{v}} pages/month",
+      "watts": "{{v}} W",
+      "battery": "{{v}} h battery",
+      "waterproof": "Waterproof"
+    },
+    "conn": {
+      "USB": "USB",
+      "Bluetooth": "Bluetooth",
+      "LAN": "LAN",
+      "WiFi": "Wi-Fi",
+      "Serial": "Serial",
+      "AUX": "AUX",
+      "HDMI": "HDMI"
+    }
+  }
+}

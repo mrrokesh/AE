@@ -1,0 +1,66 @@
+{
+  "catalog": {
+    "description": "anitaenterprises.in-ல இருந்து {{count}} பொருட்கள். விலை ₹-ல.",
+    "search": "பேரு அல்லது பிராண்ட் தேடு",
+    "all": "எல்லாம்",
+    "allCategories": "எல்லா வகையும்",
+    "allBrands": "எல்லா பிராண்டும்",
+    "brand": "பிராண்ட்",
+    "sort": {
+      "label": "வரிசைப்படுத்து",
+      "featured": "முக்கியமானது",
+      "priceAsc": "விலை: குறைவு முதல்",
+      "priceDesc": "விலை: அதிகம் முதல்"
+    },
+    "stock": {
+      "in_stock": "ஸ்டாக் இருக்கு",
+      "low": "ஸ்டாக் கம்மி",
+      "out_of_stock": "ஸ்டாக் இல்ல",
+      "lowQty_one": "{{count}} தான் இருக்கு",
+      "lowQty_other": "{{count}} தான் இருக்கு"
+    },
+    "restockOn": "{{date}}-க்குள்ள வரும்",
+    "restockUnknown": "எப்ப வரும்னு தெரியல",
+    "qty": "ஸ்டாக்ல எத்தனை",
+    "statusLabel": "ஸ்டாக் நிலை",
+    "restockDate": "மறுபடி வர்ற தேதி",
+    "stockUpdated": "ஸ்டாக் மாத்தியாச்சு: {{name}}",
+    "off": "{{pct}}% தள்ளுபடி",
+    "noSpecs": "விவரம் இல்ல",
+    "view": {
+      "grid": "கார்டு பார்வை",
+      "table": "டேபிள் பார்வை"
+    },
+    "col": {
+      "product": "பொருள்",
+      "price": "விலை",
+      "stock": "ஸ்டாக்",
+      "specs": "விவரங்கள்",
+      "edit": "ஸ்டாக் மாத்து",
+      "category": "வகை"
+    },
+    "showing": "{{total}}-ல {{shown}} காட்டுது",
+    "showMore": "இன்னும் காட்டு",
+    "emptyTitle": "பொருந்தற பொருள் இல்ல",
+    "emptyText": "வேற பேர்ல தேடுங்க, இல்லன்னா ஃபில்டரை எடுங்க.",
+    "spec": {
+      "printWidth": "{{v}} பிரிண்ட் அகலம்",
+      "color": "கலர்",
+      "mono": "கருப்பு-வெள்ளை",
+      "autoCutter": "ஆட்டோ கட்டர்",
+      "duty": "மாசம் {{v}} பக்கம்",
+      "watts": "{{v}} வாட்",
+      "battery": "{{v}} மணி பேட்டரி",
+      "waterproof": "தண்ணி புகாது"
+    },
+    "conn": {
+      "USB": "USB",
+      "Bluetooth": "புளூடூத்",
+      "LAN": "LAN",
+      "WiFi": "வைஃபை",
+      "Serial": "சீரியல்",
+      "AUX": "AUX",
+      "HDMI": "HDMI"
+    }
+  }
+}

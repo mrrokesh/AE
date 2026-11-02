@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "அனிதா எண்டர்பிரைசஸ்",
+    "tagline": "சேலம்",
+    "poweredBy": "Powered by MR Rokesh Softwares"
+  },
+  "common": {
+    "save": "சேவ் பண்ணு",
+    "cancel": "வேண்டாம்",
+    "close": "மூடு",
+    "delete": "அழி",
+    "edit": "மாற்று",
+    "back": "பின்னால்",
+    "retry": "மறுபடி try பண்ணு",
+    "loading": "ஏற்றுகிறது…",
+    "search": "தேடு",
+    "all": "எல்லாம்",
+    "none": "எதுவும் இல்லை",
+    "yes": "ஆமாம்",
+    "no": "இல்லை",
+    "unassigned": "யாருக்கும் ஒதுக்கல",
+    "you": "நீங்கள்",
+    "today": "இன்று",
+    "tomorrow": "நாளை",
+    "dismiss": "மூடு",
+    "optional": "விருப்பம்",
+    "required": "கட்டாயம்",
+    "call": "கால்",
+    "whatsapp": "வாட்ஸ்அப்",
+    "more": "மேலும்",
+    "apply": "போடு",
+    "clear": "அழி",
+    "of": "/"
+  },
+  "errors": {
+    "title": "ஏதோ தவறு நடந்துவிட்டது",
+    "generic": "இதை ஏற்ற முடியல. மறுபடி try பண்ணுங்க.",
+    "backHome": "டாஷ்போர்டுக்கு போ",
+    "notFoundTitle": "பக்கம் கிடைக்கல",
+    "notFoundText": "இந்த பக்கம் இல்லை.",
+    "goHome": "டாஷ்போர்டுக்கு போ"
+  },
+  "theme": { "light": "லைட்", "dark": "டார்க்", "system": "சிஸ்டம்", "label": "தீம்" },
+  "language": { "en": "English", "ta": "தமிழ்", "label": "மொழி", "short": "த" }
+}

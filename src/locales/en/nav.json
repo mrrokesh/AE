@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "leads": "Leads",
+    "pipeline": "Pipeline",
+    "followUps": "Follow-ups",
+    "customers": "Customers",
+    "products": "Products",
+    "reports": "Reports",
+    "aiAssistant": "AI Assistant",
+    "settings": "Settings",
+    "collapse": "Collapse",
+    "expand": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "main": "Main",
+    "inbox": "Inbox",
+    "teamDay": "Team day"
+  },
+  "topbar": {
+    "newLead": "New Lead",
+    "search": "Search leads, phone…",
+    "searchLabel": "Global search"
+  },
+  "pages": {
+    "customers": {
+      "title": "Customers",
+      "description": "Customers who bought from you, with purchase history."
+    },
+    "products": {
+      "title": "Products",
+      "description": "TVS printers, speakers and accessories with MRP and selling price."
+    },
+    "reports": {
+      "title": "Reports",
+      "description": "Conversion, source performance and sales by staff."
+    },
+    "placeholder": {
+      "title": "{{title}} is coming soon",
+      "text": "This page is a placeholder. It will be built in a later phase."
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Dashboard"
+    },
+    "leads": {
+      "title": "Leads",
+      "description": "Leads"
+    },
+    "leadDetail": {
+      "title": "Lead detail",
+      "description": "Lead detail"
+    },
+    "pipeline": {
+      "title": "Pipeline",
+      "description": "Pipeline"
+    },
+    "followUps": {
+      "title": "Follow-ups",
+      "description": "Follow-ups"
+    },
+    "aiAssistant": {
+      "title": "AI Assistant",
+      "description": "AI Assistant"
+    }
+  }
+}

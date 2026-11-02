@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "title": "Settings",
+    "description": "Appearance, alerts and demo data.",
+    "appearance": "Appearance",
+    "language": "Language",
+    "alerts": "Alerts & SLA",
+    "slaMinutes": "Response-time SLA (minutes)",
+    "slaHint": "A new lead not contacted within this time is flagged red.",
+    "escalationMinutes": "Escalate to owner after (minutes)",
+    "escalationHint": "Untouched leads past this time appear on the owner dashboard.",
+    "simulate": "Simulate website enquiries",
+    "simulateHint": "Demo mode: a new website enquiry arrives about every 90 seconds.",
+    "sound": "Notification sound",
+    "soundHint": "Play a soft chime when something new arrives.",
+    "demoData": "Demo data",
+    "demoHint": "Data lives in this browser. Resetting discards all changes and reloads fresh sample leads with dates relative to today.",
+    "reset": "Reset demo data",
+    "resetTitle": "Reset demo data?",
+    "resetText": "All current leads, activities and edits will be replaced.",
+    "resetConfirm": "Reset",
+    "resetDone": "Demo data reset",
+    "resetDoneText": "Fresh leads loaded with dates relative to today.",
+    "resetFailed": "Reset failed",
+    "counts": {
+      "leads": "Leads",
+      "products": "Products",
+      "customers": "Customers",
+      "users": "Users"
+    }
+  }
+}

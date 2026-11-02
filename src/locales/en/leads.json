@@ -1,0 +1,159 @@
+{
+  "products": {
+    "searchPlaceholder": "Search printers, speakers…",
+    "noMatch": "No matching product"
+  },
+  "followUp": {
+    "label": "Next follow-up",
+    "in2h": "In 2 hours",
+    "tomorrow11": "Tomorrow 11 AM",
+    "in3days": "In 3 days",
+    "nextWeek": "Next week",
+    "rescheduleTitle": "Reschedule follow-up",
+    "rescheduled": "Follow-up rescheduled"
+  },
+  "sla": {
+    "ok": "Respond within {{time}}",
+    "breached": "Not contacted · {{time}}",
+    "escalated": "Escalated · {{time}}"
+  },
+  "lost": {
+    "title": "Why was this lead lost?",
+    "description": "A reason is required to close a lead as lost.",
+    "reason": "Lost reason",
+    "choose": "Choose a reason",
+    "confirm": "Mark as lost"
+  },
+  "quickAdd": {
+    "title": "Quick add lead",
+    "description": "Only the phone number is required. Save it in seconds.",
+    "phone": "Phone number",
+    "phoneInvalid": "Enter a valid 10-digit mobile number",
+    "name": "Name",
+    "source": "Source",
+    "products": "Product interest",
+    "notes": "Notes",
+    "followUp": "Follow-up (defaults to tomorrow 11 AM)",
+    "saved": "Lead saved",
+    "savedText": "Follow-up set for {{when}}",
+    "shortcutHint": "Press N anywhere to add a lead",
+    "pasteToggle": "Paste a WhatsApp message or call note",
+    "pastePlaceholder": "Paste the message here, in English, Tamil or Tanglish…",
+    "parse": "Fill from message",
+    "parsing": "Reading…",
+    "parsed": "Filled from the message. Please review before saving.",
+    "noPhoneFound": "no phone number found",
+    "detected": {
+      "en": "Detected: English",
+      "ta": "Detected: Tamil",
+      "tanglish": "Detected: Tanglish"
+    },
+    "dup": {
+      "title": "This number is already in your CRM",
+      "with": "With {{name}}",
+      "addActivity": "Add activity to existing lead",
+      "open": "Open lead"
+    }
+  },
+  "logActivity": {
+    "title": "Log activity",
+    "outcome": "What happened?",
+    "chooseOutcome": "Choose an outcome",
+    "note": "Note",
+    "notePlaceholder": "Anything worth remembering…",
+    "stage": "Move to stage",
+    "keepStage": "Keep current stage",
+    "saved": "Activity logged",
+    "next": {
+      "title": "What happens next?",
+      "followUp": "Follow up again",
+      "won": "Won",
+      "lost": "Lost",
+      "required": "Set the next follow-up, or close the lead as Won or Lost."
+    }
+  },
+  "inbox": {
+    "title": "Enquiry inbox",
+    "description": "New enquiries nobody has picked up yet. Claim one to start.",
+    "emptyTitle": "Inbox is clear",
+    "emptyText": "Every enquiry has an owner. Nice work.",
+    "claim": "Claim",
+    "assignTo": "Assign to…",
+    "claimedToast": "You claimed {{name}}",
+    "assignedToast": "Assigned to {{name}}",
+    "waiting": "Waiting {{time}}",
+    "newEnquiry": "New website enquiry",
+    "newEnquiryText": "{{name}} is asking about {{product}}",
+    "badge": "{{count}} unassigned"
+  },
+  "leads": {
+    "title": "Leads",
+    "description": "{{count}} leads you can see. Click a column header to sort.",
+    "searchLabel": "Search leads",
+    "searchPlaceholder": "Search name, phone, locality, product…",
+    "filters": "Filters",
+    "allStages": "All stages",
+    "allSources": "All sources",
+    "allAssignees": "All team",
+    "allProducts": "All products",
+    "allTemps": "Hot, warm, cold",
+    "from": "Created from",
+    "to": "Created to",
+    "bucket": "Follow-up",
+    "anyFollowUp": "Any follow-up",
+    "export": "Export CSV",
+    "selectAll": "Select all on page",
+    "selectRow": "Select lead",
+    "sortBy": "Sort by",
+    "showing": "Showing {{from}}–{{to}} of {{total}}",
+    "prev": "Previous",
+    "next": "Next",
+    "emptyTitle": "No leads match",
+    "emptyText": "Try clearing a filter or searching for something else.",
+    "col": {
+      "name": "Lead",
+      "phone": "Phone",
+      "city": "Locality",
+      "stage": "Stage",
+      "temperature": "Hot / Warm / Cold",
+      "source": "Source",
+      "product": "Product interest",
+      "assignee": "Assigned to",
+      "nextFollowUp": "Next follow-up",
+      "lastContacted": "Last contacted",
+      "created": "Created"
+    },
+    "bulk": {
+      "selected_one": "{{count}} selected",
+      "selected_other": "{{count}} selected",
+      "assign": "Assign to…",
+      "stage": "Change stage…",
+      "assigned_one": "{{count}} lead assigned to {{name}}",
+      "assigned_other": "{{count}} leads assigned to {{name}}",
+      "staged_one": "{{count}} lead updated",
+      "staged_other": "{{count}} leads updated"
+    }
+  },
+  "pipeline": {
+    "title": "Pipeline",
+    "description": "Drag a lead to another stage. Dropping on Lost asks for a reason.",
+    "moved": "Moved to {{stage}}",
+    "moveTo": "Move to…",
+    "empty": "No leads here"
+  },
+  "leadDetail": {
+    "backToLeads": "Back to leads",
+    "notFound": "Lead not found",
+    "notFoundText": "It may have been removed, or it belongs to another team member.",
+    "timeline": "Activity timeline",
+    "noActivity": "No activity yet.",
+    "followUp": "Next follow-up",
+    "overdue": "Overdue, was due {{time}}",
+    "addNote": "Add note",
+    "products": "Products of interest",
+    "noProducts": "No product selected yet.",
+    "qty": "Quantity",
+    "estimate": "Estimate",
+    "budget": "Budget"
+  }
+}

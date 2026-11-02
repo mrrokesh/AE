@@ -1,0 +1,75 @@
+{
+  "stages": {
+    "new": "New",
+    "contacted": "Contacted",
+    "interested": "Interested",
+    "store_visit": "Store Visit",
+    "negotiation": "Negotiation",
+    "won": "Won",
+    "lost": "Lost"
+  },
+  "sources": {
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "walk_in": "Walk-in",
+    "website": "Website"
+  },
+  "lostReasons": {
+    "price": "Price too high",
+    "bought_elsewhere": "Bought elsewhere",
+    "not_reachable": "Not reachable",
+    "changed_mind": "Changed mind",
+    "out_of_stock": "Out of stock",
+    "other": "Other"
+  },
+  "categories": {
+    "thermal": "Thermal printers",
+    "label": "Label printers",
+    "dot_matrix": "Dot-matrix printers",
+    "laser": "Laser printers",
+    "ink_tank": "Ink-tank printers",
+    "speaker": "Speakers",
+    "accessory": "Accessories",
+    "photo": "Photo printers",
+    "cartridge": "Cartridge printers"
+  },
+  "temperature": {
+    "hot": "Hot",
+    "warm": "Warm",
+    "cold": "Cold"
+  },
+  "roles": {
+    "owner": "Owner",
+    "staff": "Staff"
+  },
+  "activityTypes": {
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "visit": "Visit",
+    "note": "Note",
+    "stage_change": "Stage change",
+    "system": "System"
+  },
+  "act": {
+    "enquiry": {
+      "phone": "Enquired about {{product}} by phone",
+      "whatsapp": "Enquired about {{product}} on WhatsApp",
+      "walk_in": "Walked in and asked about {{product}}",
+      "website": "Website enquiry about {{product}}"
+    },
+    "spoke": "Spoke to customer, understood need and budget",
+    "noAnswer": "Called, no answer",
+    "priceAsked": "Customer asked for the price",
+    "sentPrices": "Sent price details on WhatsApp",
+    "visitedStore": "Customer visited the store",
+    "negotiating": "Discussed price and offer",
+    "callBackLater": "Asked to call back later",
+    "won": "Order confirmed",
+    "lost": "Customer did not buy",
+    "stageChange": "Stage changed to {{stage}}",
+    "rescheduled": "Follow-up rescheduled",
+    "assigned": "Assigned to {{name}}",
+    "claimed": "{{name}} claimed this lead",
+    "created": "Lead added"
+  }
+}

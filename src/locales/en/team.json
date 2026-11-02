@@ -1,0 +1,57 @@
+{
+  "wa": {
+    "yourEnquiry": "your enquiry",
+    "followUp": "Hello {{name}}, this is {{staff}} from Anita Enterprises, Salem. Just checking on {{product}} that you enquired about. Can I help you with anything?",
+    "offer": "Hello {{name}}, good news from Anita Enterprises! {{product}} is available at {{price}} (MRP {{mrp}}). Offer valid this week. Shall I keep one ready for you?",
+    "visit": "Hello {{name}}, you are welcome to visit Anita Enterprises, Salem to see {{product}} in person. Tell me what time suits you and I will keep it ready.",
+    "thanks": "Thank you {{name}} for choosing Anita Enterprises! {{product}} is a great pick. Call me anytime if you need help with setup or service. - {{staff}}"
+  },
+  "followUps": {
+    "title": "Follow-ups",
+    "description": "Every lead needs a next step. Work through these top to bottom.",
+    "assignee": "Team member",
+    "everyone": "Everyone",
+    "logOutcome": "Log outcome",
+    "reschedule": "Reschedule",
+    "tabs": {
+      "overdue": "Overdue",
+      "today": "Today",
+      "upcoming": "Upcoming",
+      "done": "Done"
+    },
+    "empty": {
+      "overdue": "Nothing overdue",
+      "today": "Nothing due today",
+      "upcoming": "Nothing scheduled",
+      "done": "No activity logged yet",
+      "text": "You are all caught up."
+    }
+  },
+  "bell": {
+    "title": "Notifications",
+    "empty": "You are all caught up",
+    "enable": "Enable browser alerts",
+    "blocked": "Alerts blocked in browser",
+    "followUpDue": "Follow-up due now",
+    "callNow": "Time to call",
+    "kind": {
+      "escalation": "Not contacted, escalated",
+      "enquiry": "New enquiry waiting",
+      "overdue": "Follow-up overdue"
+    }
+  },
+  "teamDay": {
+    "title": "Team day",
+    "description": "What each person did today ({{date}}), what was missed and what carries over to tomorrow.",
+    "allClear": "All clear",
+    "missedCount_one": "{{count}} missed",
+    "missedCount_other": "{{count}} missed",
+    "contacts": "Contacts today",
+    "won": "Won today",
+    "missed": "Missed",
+    "carryOver": "Carries to tomorrow",
+    "breakdown": "{{calls}} calls · {{whatsapps}} WhatsApp · {{visits}} visits · {{tomorrow}} already scheduled for tomorrow",
+    "missedList": "Missed (overdue or untouched)",
+    "carryList": "Carry over to tomorrow"
+  }
+}

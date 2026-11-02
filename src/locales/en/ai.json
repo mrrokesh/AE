@@ -1,0 +1,153 @@
+{
+  "ai": {
+    "reason": {
+      "stage": {
+        "contacted": "Already spoken to",
+        "interested": "Showed interest",
+        "store_visit": "Planning or made a store visit",
+        "negotiation": "In price negotiation"
+      },
+      "priceAsked": "Asked about price",
+      "visitedStore": "Visited the store",
+      "bulk": "Wants {{count}} units",
+      "urgent": "Marked urgent",
+      "walkIn": "Walk-in customer",
+      "recentContact": "Spoke recently",
+      "noReply": "No contact for {{days}} days",
+      "untouched": "Not contacted yet",
+      "followUpOverdue": "Follow-up is overdue"
+    },
+    "bestTime": {
+      "now": "Right now",
+      "evening": "Today 5–7 PM",
+      "tomorrowMorning": "Tomorrow 10–11 AM",
+      "around": "Around {{time}} (when they usually pick up)",
+      "midday": "Today 11 AM–1 PM",
+      "none": "No call needed"
+    },
+    "next": {
+      "followUp": "Check on {{product}} with a short message.",
+      "closed": "Deal is closed. Ask for a referral or review.",
+      "untouched": "Call {{name}} now: enquiry is {{time}} old and nobody has spoken to them.",
+      "noAnswer": "They did not pick up. Send a WhatsApp about {{product}}, then retry.",
+      "negotiation": "Close the deal: call {{name}} with your best price on {{product}}.",
+      "afterVisit": "Call {{name}} after the store visit and ask what is holding them back.",
+      "overdue": "Follow-up missed. Call {{name}} now, last spoken {{days}} days ago.",
+      "sendQuote": "They asked the price. Send the {{product}} quote on WhatsApp.",
+      "invite": "Invite {{name}} to the store to see {{product}}."
+    },
+    "rec": {
+      "fitsBudget": "Fits their budget of {{budget}}",
+      "alternative": "Similar option to compare",
+      "accessory": "Goes well with {{product}}",
+      "popular": "Popular with other customers"
+    },
+    "briefing": {
+      "morning": "Good morning!",
+      "afternoon": "Good afternoon!",
+      "evening": "Good evening!",
+      "overdue": "{{count}} follow-ups are overdue.",
+      "hot": "{{count}} hot leads need attention today.",
+      "untouched": "{{count}} new enquiries are still untouched past the response time.",
+      "staff": "{{name}} has the most waiting ({{count}}).",
+      "allClear": "Everything is on track. No missed follow-ups."
+    },
+    "risk": {
+      "reason": "{{label}} lead, no contact for {{days}} days"
+    },
+    "chat": {
+      "help": "Try: \"Show hot leads\", \"Who has overdue follow-ups?\", \"Untouched leads\", \"Website enquiries this week\", or ask about a team member by name.",
+      "hot": "{{count}} hot leads:",
+      "hot_none": "No hot leads right now.",
+      "hotToday": "{{count}} hot leads to act on today:",
+      "hotToday_none": "No hot leads for today.",
+      "overdue": "{{count}} overdue follow-ups, oldest first:",
+      "overdue_none": "Nothing overdue. Great!",
+      "untouched": "{{count}} leads not contacted within {{sla}} minutes:",
+      "untouched_none": "Every lead has been contacted.",
+      "unassigned": "{{count}} leads in the inbox with no owner:",
+      "unassigned_none": "Inbox is empty.",
+      "website": "{{count}} website enquiries:",
+      "website_none": "No website enquiries.",
+      "websiteToday": "{{count}} website enquiries today:",
+      "websiteToday_none": "No website enquiries today.",
+      "websiteWeek": "{{count}} website enquiries this week:",
+      "websiteWeek_none": "No website enquiries this week.",
+      "won": "{{count}} deals won:",
+      "won_none": "No deals won yet.",
+      "lost": "{{count}} leads lost:",
+      "lost_none": "No lost leads.",
+      "followToday": "{{count}} follow-ups due today:",
+      "followToday_none": "No follow-ups due today.",
+      "staff": "{{name}} has {{open}} open leads, {{overdue}} overdue:",
+      "staff_none": "{{name}} has no open leads."
+    }
+  },
+  "aiPanel": {
+    "title": "AI assistant",
+    "score": "Lead score",
+    "nextAction": "Suggested next step",
+    "bestTime": "Best time to call",
+    "draft": "WhatsApp draft",
+    "draftKind": "Message type",
+    "regenerate": "Refresh",
+    "copy": "Copy",
+    "copied": "Copied",
+    "open": "Open in WhatsApp",
+    "recommend": "Products to suggest",
+    "thinking": "Thinking…",
+    "none": "Nothing to suggest.",
+    "failed": "AI is unavailable right now. Please try again.",
+    "mock": "Demo AI: rule-based, no data leaves your browser.",
+    "kind": {
+      "followUp": "Follow-up",
+      "offer": "Offer",
+      "visit": "Store invite",
+      "thanks": "Thank you"
+    }
+  },
+  "assistant": {
+    "title": "AI assistant",
+    "description": "Ask about your leads in English or Tamil.",
+    "placeholder": "Ask something, e.g. Show hot leads",
+    "send": "Send",
+    "you": "You",
+    "assistant": "Assistant",
+    "thinking": "Thinking…",
+    "welcome": "Hi! I can find hot leads, overdue follow-ups, untouched enquiries and more.",
+    "suggest": {
+      "hot": "Show hot leads",
+      "overdue": "Overdue follow-ups",
+      "untouched": "Untouched leads",
+      "website": "Website enquiries this week",
+      "unassigned": "Unassigned leads"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "What needs your attention, and how the team is doing.",
+    "briefing": "AI briefing",
+    "enquiriesToday": "Enquiries today",
+    "untouched": "Not contacted yet",
+    "overdue": "Overdue follow-ups",
+    "avgResponse": "Median first response (7 days)",
+    "todayBySource": "Today's enquiries by source",
+    "overduePerStaff": "Overdue per team member",
+    "conversion": "Conversion by source (% won)",
+    "lostReasons": "Why we lost leads",
+    "noData": "No data yet.",
+    "noneOverdue": "Nothing overdue. Great!",
+    "leaderboard": "Leaderboard",
+    "openLeads": "{{count}} open",
+    "wonCount": "{{count}} won",
+    "atRisk": "Leads at risk",
+    "atRiskNone": "No warm leads going cold.",
+    "myDay": "My day, {{name}}",
+    "myDayText": "Your next calls, in order.",
+    "dueToday": "Due today",
+    "hotLeads": "Hot leads",
+    "doNext": "Do these next",
+    "allDone": "All caught up. Nothing waiting.",
+    "newEnquiry": "New enquiry"
+  }
+}

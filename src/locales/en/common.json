@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "Anita Enterprises",
+    "tagline": "Salem",
+    "poweredBy": "Powered by MR Rokesh Softwares"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "retry": "Retry",
+    "loading": "Loading…",
+    "search": "Search",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "unassigned": "Unassigned",
+    "you": "You",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "dismiss": "Dismiss",
+    "optional": "optional",
+    "required": "Required",
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "more": "More",
+    "apply": "Apply",
+    "clear": "Clear",
+    "of": "of"
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "generic": "We couldn't load this. Please try again.",
+    "backHome": "Back to dashboard",
+    "notFoundTitle": "Page not found",
+    "notFoundText": "That page doesn't exist.",
+    "goHome": "Go to dashboard"
+  },
+  "theme": { "light": "Light", "dark": "Dark", "system": "System", "label": "Theme" },
+  "language": { "en": "English", "ta": "தமிழ்", "label": "Language", "short": "EN" }
+}

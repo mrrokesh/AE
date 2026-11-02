@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "dashboard": "டாஷ்போர்டு",
+    "leads": "லீட்ஸ்",
+    "pipeline": "பைப்லைன்",
+    "followUps": "ஃபாலோ-அப்",
+    "customers": "கஸ்டமர்ஸ்",
+    "products": "பொருட்கள்",
+    "reports": "ரிப்போர்ட்",
+    "aiAssistant": "AI உதவியாளர்",
+    "settings": "செட்டிங்ஸ்",
+    "collapse": "சுருக்கு",
+    "expand": "பக்கப்பட்டியை விரி",
+    "collapseSidebar": "பக்கப்பட்டியை சுருக்கு",
+    "openMenu": "மெனு திற",
+    "closeMenu": "மெனு மூடு",
+    "main": "முதன்மை",
+    "inbox": "புது விசாரிப்பு",
+    "teamDay": "டீம் இன்றைய நிலை"
+  },
+  "topbar": {
+    "newLead": "புது லீட்",
+    "search": "லீட், போன் நம்பர் தேடு…",
+    "searchLabel": "தேடல்"
+  },
+  "pages": {
+    "customers": {
+      "title": "கஸ்டமர்ஸ்",
+      "description": "உங்ககிட்ட வாங்கினவங்க, அவங்க வாங்கின விவரத்தோட."
+    },
+    "products": {
+      "title": "பொருட்கள்",
+      "description": "TVS பிரிண்டர், ஸ்பீக்கர், ஆக்சசரிஸ் - MRP, விற்பனை விலையோட."
+    },
+    "reports": {
+      "title": "ரிப்போர்ட்",
+      "description": "விற்பனை மாற்றம், எந்த வழியில் அதிக லீட், ஸ்டாஃப் வாரியா விற்பனை."
+    },
+    "placeholder": {
+      "title": "{{title}} சீக்கிரம் வரும்",
+      "text": "இது தற்காலிக பக்கம். அடுத்த கட்டத்தில் உருவாக்கப்படும்."
+    },
+    "dashboard": {
+      "title": "டாஷ்போர்டு",
+      "description": "டாஷ்போர்டு"
+    },
+    "leads": {
+      "title": "லீட்ஸ்",
+      "description": "லீட்ஸ்"
+    },
+    "leadDetail": {
+      "title": "லீட் விவரம்",
+      "description": "லீட் விவரம்"
+    },
+    "pipeline": {
+      "title": "பைப்லைன்",
+      "description": "பைப்லைன்"
+    },
+    "followUps": {
+      "title": "ஃபாலோ-அப்",
+      "description": "ஃபாலோ-அப்"
+    },
+    "aiAssistant": {
+      "title": "AI உதவியாளர்",
+      "description": "AI உதவியாளர்"
+    }
+  }
+}

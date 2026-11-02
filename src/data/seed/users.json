@@ -1,0 +1,38 @@
+[
+  {
+    "id": "u_1",
+    "name": "Anita Enterprises",
+    "role": "owner",
+    "email": "owner@anitaenterprises.in",
+    "phone": "9842000001",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u_2",
+    "name": "Priya Lakshmi",
+    "role": "staff",
+    "email": "priya@anitaenterprises.in",
+    "phone": "9842000002",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u_3",
+    "name": "Karthik Subramani",
+    "role": "staff",
+    "email": "karthik@anitaenterprises.in",
+    "phone": "9842000003",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u_4",
+    "name": "Mohammed Faizal",
+    "role": "staff",
+    "email": "faizal@anitaenterprises.in",
+    "phone": "9842000004",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z"
+  }
+]
