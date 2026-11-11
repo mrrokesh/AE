@@ -31,6 +31,12 @@
     "speaker": "ஸ்பீக்கர்",
     "accessory": "ஆக்சசரிஸ்",
     "photo": "போட்டோ பிரிண்டர்",
+    "charger": "லேப்டாப் சார்ஜர்",
+    "ram": "RAM",
+    "storage": "ஹார்ட் டிஸ்க் & SSD",
+    "peripheral": "மவுஸ் & கீபோர்டு",
+    "laptop": "லேப்டாப்",
+    "desktop": "டெஸ்க்டாப் PC",
     "cartridge": "கார்ட்ரிட்ஜ் பிரிண்டர்"
   },
   "temperature": {

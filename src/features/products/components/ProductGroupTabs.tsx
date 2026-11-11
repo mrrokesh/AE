@@ -89,6 +89,30 @@ export function ProductGroupTabs({
         </div>
       )}
 
+      {(g === 'computers' || g === 'accessories') && (
+        <div className="space-y-2 rounded-lg border border-border bg-surface-2/50 p-2.5">
+          <div
+            role="tablist"
+            aria-label={t(g === 'computers' ? 'catalog.filter.computerType' : 'catalog.filter.accessoryType')}
+            className="flex flex-wrap gap-1.5"
+          >
+            <FilterChip active={filters.category === ''} onClick={() => onChange({ category: '' })}>
+              {t('catalog.filter.allTypes')}
+            </FilterChip>
+            {types.map(([id, n]) => (
+              <FilterChip
+                key={id}
+                active={filters.category === id}
+                count={n}
+                onClick={() => onChange({ category: id })}
+              >
+                {t(`categories.${id}`)}
+              </FilterChip>
+            ))}
+          </div>
+        </div>
+      )}
+
       {g === 'speakers' && (
         <div className="flex flex-wrap items-center gap-2 rounded-lg border border-border bg-surface-2/50 p-2.5">
           <div className="w-40">

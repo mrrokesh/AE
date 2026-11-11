@@ -74,6 +74,8 @@ const CATEGORY_WORDS: Record<string, string[]> = {
     'இங்க் டேங்க்',
     'கலர் பிரிண்ட்',
   ],
+  laptop: ['laptop', 'notebook', 'lappy', 'லேப்டாப்'],
+  desktop: ['desktop', 'cpu set', 'computer', 'டெஸ்க்டாப்', 'கம்ப்யூட்டர்'],
   speaker: [
     'speaker',
     'spekar',

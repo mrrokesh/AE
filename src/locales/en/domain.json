@@ -31,6 +31,12 @@
     "speaker": "Speakers",
     "accessory": "Accessories",
     "photo": "Photo printers",
+    "charger": "Laptop chargers",
+    "ram": "RAM",
+    "storage": "Hard disks & SSDs",
+    "peripheral": "Mouse & keyboards",
+    "laptop": "Laptops",
+    "desktop": "Desktop PCs",
     "cartridge": "Cartridge printers"
   },
   "temperature": {

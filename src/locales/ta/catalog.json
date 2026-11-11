@@ -149,11 +149,14 @@
     "group": {
       "label": "பொருள் பிரிவு",
       "printers": "பிரிண்டர்ஸ்",
+      "computers": "லேப்டாப் & PC",
       "speakers": "ஸ்பீக்கர்ஸ்",
-      "accessories": "லேப்டாப் ஆக்சசரிஸ்"
+      "accessories": "லேப்டாப் & PC ஆக்சசரிஸ்"
     },
     "filter": {
       "type": "பிரிண்டர் வகை",
+      "accessoryType": "ஆக்சசரி வகை",
+      "computerType": "கம்ப்யூட்டர் வகை",
       "allTypes": "எல்லா வகையும்",
       "connectivity": "கனெக்டிவிட்டி",
       "anyConnectivity": "எந்த கனெக்டிவிட்டியும்",

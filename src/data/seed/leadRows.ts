@@ -48,4 +48,30 @@ Tamilarasan P|Attur|walk_in|p5245|1|contacted|today|
 Bhuvaneswari L|Hasthampatti|website|p4480|1|new|fresh|
 Sakthivel M|Fairlands|phone|p5612|2|interested|overdue|price2
 Nirmala Devi|Shevapet|whatsapp|p4603,p4471|2|contacted|upcoming|ta
-Yasmin Banu|Five Roads|walk_in|p4717|1|interested|today|`
+Yasmin Banu|Five Roads|walk_in|p4717|1|interested|today|
+Arvind S|Fairlands|walk_in|c1001|1|interested|overdue|price2
+Divya Bharathi|Hasthampatti|website|c1004|1|new|fresh|
+Karthik Raja|Five Roads|phone|c1002|1|negotiation|today|price2,touched
+Mahalakshmi V|Shevapet|whatsapp|c1003|1|contacted|upcoming|tanglish
+Rajasekar P|Ammapet|walk_in|c1007,c1008|5|negotiation|atrisk|price2,bulk
+Sumathi K|Junction|phone|c1005|1|store_visit|today|visit
+Naveen Kumar|Suramangalam|website|c1006|1|interested|overdue|price2
+Bharath M|Alagapuram|walk_in|c1001|1|won|won|
+Keerthana R|Cherry Road|whatsapp|c1003|1|won|wontoday|
+Ashok Kumar|Gugai|phone|c1007|3|won|won|
+Janani S|Fairlands|walk_in|c1002|1|won|won|
+Vasanth P|Omalur|website|c1004|2|won|won|
+Surya Prakash|Kondalampatti|phone|c1010|2|won|won|
+Ezhil Arasan|Attur|whatsapp|c1005|1|lost|lost|
+Gokul N|Mettur|phone|c1002|1|lost|lost|
+Priyanka D|Five Roads|website|c1009|1|lost|lost|
+Hemalatha T|Shevapet|walk_in|c1003|2|interested|upcoming|ta
+Mohan Raj|Neimandi|phone|c1008|1|contacted|overdue|noans
+Suresh Kumar|Junction|walk_in|a2101|2|won|won|
+Padma R|Five Roads|phone|a2201,a2101|1|won|won|
+Imran Khan|Shevapet|whatsapp|a2001|1|interested|today|touched
+Gayathri M|Fairlands|walk_in|a2203|1|negotiation|upcoming|price2
+Lokesh B|Ammapet|phone|a2102|2|interested|overdue|price2
+Deepak S|Hasthampatti|website|a2002|1|contacted|upcoming|
+Ravi Chandran|Gugai|phone|a2301,a2302|10|negotiation|today|bulk,price2
+Sabitha N|Omalur|walk_in|a2202|1|lost|lost|`

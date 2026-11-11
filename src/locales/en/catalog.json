@@ -149,11 +149,14 @@
     "group": {
       "label": "Product section",
       "printers": "Printers",
+      "computers": "Laptops & PCs",
       "speakers": "Speakers",
-      "accessories": "Laptop accessories"
+      "accessories": "Laptop & PC accessories"
     },
     "filter": {
       "type": "Printer type",
+      "accessoryType": "Accessory type",
+      "computerType": "Computer type",
       "allTypes": "All types",
       "connectivity": "Connectivity",
       "anyConnectivity": "Any connectivity",

@@ -2,7 +2,9 @@ import type { Activity, Customer, Lead, Product, User } from '@/types'
 import type { LostReasonId, SourceId, StageId } from '@/constants'
 import { LOST_REASONS } from '@/constants'
 import { startOfDayIST } from '@/lib/dates'
-import products from './products.json'
+import accessories from './accessories.json'
+import computers from './computers.json'
+import printerSpeakerProducts from './products.json'
 import users from './users.json'
 import { LEAD_ROWS } from './leadRows'
 
@@ -12,6 +14,9 @@ export interface SeedData {
   leads: Lead[]
   customers: Customer[]
 }
+
+/** Printers/speakers come from the importer; computers and accessories are hand-maintained demo stock. */
+const products = [...printerSpeakerProducts, ...computers, ...accessories]
 
 const MIN = 60_000
 const HOUR = 60 * MIN

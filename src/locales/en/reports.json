@@ -1,0 +1,48 @@
+{
+  "reports": {
+    "title": "Sales report",
+    "description": "Revenue, orders and what is selling, by product, staff and source.",
+    "export": "Export CSV",
+    "noSales": "No sales in this period",
+    "trend": "Revenue over time",
+    "byProduct": "Top products",
+    "byCategory": "Sales by category",
+    "byStaff": "Sales by staff",
+    "bySource": "Sales by lead source",
+    "topCustomers": "Top customers",
+    "orders_one": "{{count}} order",
+    "orders_other": "{{count}} orders",
+    "units_one": "{{count}} unit",
+    "units_other": "{{count}} units",
+    "conversion": {
+      "title": "Conversion by salesperson",
+      "hint": "Won leads as a share of all leads assigned. Covers all time.",
+      "top": "Best",
+      "detail": "{{won}} won of {{total}} leads · {{lost}} lost · {{open}} open",
+      "closedRate": "{{rate}}% of closed leads won",
+      "noClosed": "No closed leads yet"
+    },
+    "range": {
+      "7d": "Last 7 days",
+      "30d": "Last 30 days",
+      "90d": "Last 90 days",
+      "all": "All time"
+    },
+    "stat": {
+      "revenue": "Revenue",
+      "orders": "Orders",
+      "avgOrder": "Average order",
+      "buyers": "Customers"
+    },
+    "csv": {
+      "date": "Date",
+      "invoice": "Invoice",
+      "customer": "Customer",
+      "products": "Products",
+      "units": "Units",
+      "total": "Total (INR)",
+      "staff": "Staff",
+      "source": "Source"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "customers": {
+    "search": "Search name, phone, city or invoice",
+    "emptyTitle": "No customers found",
+    "emptyText": "Customers appear here once a lead is marked as won. Try a different search.",
+    "viewLead": "View lead",
+    "phone": "Phone",
+    "email": "Email",
+    "totalSpent": "Total spent",
+    "since": "Customer since",
+    "purchases": "Purchases",
+    "stat": {
+      "count": "Customers",
+      "spent": "Total sales",
+      "orders": "Orders",
+      "repeat": "Repeat buyers"
+    },
+    "col": {
+      "name": "Customer",
+      "phone": "Phone",
+      "city": "City",
+      "orders": "Orders",
+      "spent": "Total spent",
+      "last": "Last purchase"
+    },
+    "sort": {
+      "label": "Sort customers",
+      "recent": "Most recent",
+      "spent": "Highest spend",
+      "name": "Name A-Z"
+    }
+  }
+}

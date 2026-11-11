@@ -7,7 +7,8 @@ export const PRODUCT_GROUPS = [
     categories: ['thermal', 'label', 'dot_matrix', 'laser', 'ink_tank', 'photo', 'cartridge'],
   },
   { id: 'speakers', categories: ['speaker'] },
-  { id: 'accessories', categories: ['accessory'] },
+  { id: 'computers', categories: ['laptop', 'desktop'] },
+  { id: 'accessories', categories: ['charger', 'ram', 'storage', 'peripheral', 'accessory'] },
 ] as const satisfies readonly { id: string; categories: readonly CategoryId[] }[]
 export type ProductGroupId = (typeof PRODUCT_GROUPS)[number]['id']
 export const groupOfCategory = (c: CategoryId): ProductGroupId | undefined =>

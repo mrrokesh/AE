@@ -47,6 +47,10 @@ const RELATED: Partial<Record<CategoryId, CategoryId[]>> = {
   photo: ['ink_tank'],
   cartridge: ['photo', 'ink_tank'],
   ink_tank: ['photo'],
+  charger: ['accessory'],
+  storage: ['ram'],
+  laptop: ['desktop'],
+  desktop: ['laptop'],
 }
 
 interface Cmp {

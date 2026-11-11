@@ -3,7 +3,7 @@ import { buildSeed } from '@/data/seed'
 const PREFIX = 'anita-crm:data:'
 const SEEDED_KEY = `${PREFIX}__seeded`
 /** Bump when the seed shape changes; old browsers get reseeded automatically. */
-const SEED_VERSION = 'v4'
+const SEED_VERSION = 'v5'
 const COLLECTIONS = ['users', 'products', 'leads', 'customers'] as const
 
 export function readCollection<T>(name: string): T[] {

@@ -69,6 +69,11 @@ export interface ProductSpecs {
   waterproof: string | null // 'IPX7' or 'Waterproof'
   // both
   connectivity: Connectivity[] | null
+  // laptops / desktop PCs (optional so older products stay valid)
+  cpu?: string | null
+  ramGb?: number | null
+  storage?: string | null
+  screen?: string | null
 }
 
 export interface Product extends Entity {

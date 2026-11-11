@@ -9,6 +9,12 @@ export const PRODUCT_CATEGORIES = [
   { id: 'cartridge' },
   { id: 'speaker' },
   { id: 'accessory' },
+  { id: 'charger' },
+  { id: 'ram' },
+  { id: 'storage' },
+  { id: 'peripheral' },
+  { id: 'laptop' },
+  { id: 'desktop' },
 ] as const
 export type CategoryId = (typeof PRODUCT_CATEGORIES)[number]['id']
 
